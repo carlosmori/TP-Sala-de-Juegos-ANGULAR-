@@ -1,4 +1,9 @@
 export class JuegoAgilidad {
-    numeroIngresado: number;
-    gano: boolean;
+  primerNumero: number;
+  segundoNumero: number;
+  operadores: string[];
+  operadorSeleccionado: string;
+  resultado: number;
+  numeroIngresado: number;
+  gano: boolean;
 }
