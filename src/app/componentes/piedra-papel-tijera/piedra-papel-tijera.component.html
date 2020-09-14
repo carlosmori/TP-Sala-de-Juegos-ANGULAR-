@@ -1,0 +1,27 @@
+<div class="piedraPapelTijeraContainer">
+    <h1>Piedra Papel Tijera</h1>
+    <h2>Elige una opción (Las partidas son a 3)</h2>
+    <mat-divider></mat-divider>
+    <div class="resultsContainer">
+        <div>Score</div>
+        <div>
+            La maquina: {{nuevoJuego.scoreMaquina}} - Tu: {{nuevoJuego.scoreJugador}}
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="optionsContainer">
+        <div class="optionContainer">
+            <button mat-raised-button color="accent" (click)="pick(0)" >Piedra</button>
+        </div>
+        <div class="optionContainer">
+            <button mat-raised-button color="accent" (click)="pick(1)">Papel</button>
+        </div>
+        <div class="optionContainer">
+            <button mat-raised-button color="accent" (click)="pick(2)">Tijera</button>
+        </div>
+    </div>
+    <mat-divider></mat-divider>
+    <div>
+        {{displayMessage}}
+    </div>
+</div>

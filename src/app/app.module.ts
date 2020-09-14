@@ -51,6 +51,9 @@ import { AnagramaComponent } from './componentes/anagrama/anagrama.component';
 import { ListadoDePaisesComponent } from './componentes/listado-de-paises/listado-de-paises.component';
 import { InputJugadoresComponent } from './componentes/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -75,16 +78,16 @@ import { SexoPipe } from './pipes/sexo.pipe';
     ListadoDePaisesComponent,
     JugadoresListadoComponent,
     InputJugadoresComponent,
-    SexoPipe
+    SexoPipe,
+    PiedraPapelTijeraComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     RuteandoModule,
-    HttpModule
-    // NgbModule.forRoot(MiRuteo),
-    // importo el ruteo
-    // RouterModule.forRoot(MiRuteo)
+    HttpModule,
+    BrowserAnimationsModule,
+    AngularMaterialModule
   ],
   providers: [
     JuegoServiceService,
