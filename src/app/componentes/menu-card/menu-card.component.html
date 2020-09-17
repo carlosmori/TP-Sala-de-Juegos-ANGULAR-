@@ -1,87 +1,79 @@
-<div class="container" >
-    <div class="card">
-      <img class="img-thumbnail"   src="./assets/imagenes/nuevas/tateti.jpg" alt="Avatar" style="width:100%">
-      <h1> Tic Tac Toe </h1>
-      <p class="title">Clasico TaTeTi</p>
-      <p>UTN FRA </p>
-  
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>
-        <button class="button"  (click)="Juego('TicTacToe')">Jugar</button>
-      </p>
-    
-    </div>
-    <div class="card">
-      <img class="img-thumbnail"   src="./assets/imagenes/nuevas/memotest.jpg" alt="Avatar" style="width:100%">
-      <h1> MemoTest </h1>
-      <p class="title">A ver que tan bueno eres con tu memoria</p>
-      <p>UTN FRA </p>
-  
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>
-        <button class="button"  (click)="Juego('MemoTest')">Jugar</button>
-      </p>
-    
-    </div>
-    <div class="card">
-      <img class="img-thumbnail"   src="./assets/imagenes/nuevas/anagrama.jpg" alt="Avatar" style="width:100%">
-      <h1> Anagrama </h1>
-      <p class="title">Juego de Ingenio</p>
-      <p>UTN FRA </p>
-  
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>
-        <button class="button"  (click)="Juego('Anagrama')">Jugar</button>
-      </p>
-    
-    </div>
-    <div class="card">
-      <img class="img-thumbnail"   src="./assets/imagenes/nuevas/Mind.jpg" alt="Avatar" style="width:100%">
-      <h1>Velocidad y agilidad aritmética </h1>
-      <p class="title">Juego de agilidad mental</p>
-      <p>UTN FRA </p>
-  
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>
-        <button class="button"  (click)="Juego('Agilidad')">Jugar</button>
-      </p>
-    
-    </div>
-  
-    <div class="card">
-      <img class="img-thumbnail" src="./assets/imagenes/nuevas/rock-paper.jpg" alt="Avatar" style="width:100%">
-      <h1>Piedra Papel o Tijera</h1>
-      <p class="title">Juega contra la máquina</p>
-      <p>UTN FRA </p>
-      
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>           <button class="button"  (click)="Juego('PiedraPapelTijera')">Jugar</button></p>
-    </div>
-    <div class="card">
-      <img  class="img-thumbnail"  src="./assets/imagenes/nuevas/Guess.jpg" alt="Avatar" style="width:100%">
-      <h1>Adivina el número secreto</h1>
-      <p class="title">Juega de estrategia</p>
-      <p>UTN FRA </p>
-      
-      <a href="#"><i class="fa fa-dribbble"></i></a> 
-      <a href="#"><i class="fa fa-twitter"></i></a> 
-      <a href="#"><i class="fa fa-linkedin"></i></a> 
-      <a href="#"><i class="fa fa-facebook"></i></a> 
-      <p>           <button class="button"  (click)="Juego('Adivina')">Jugar</button></p>
-    </div>
-  </div>
+<div class="main-container" >
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>TaTeTi</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/tateti.jpg">
+    <mat-card-content>
+      <p>Clasico TaTeTi</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('TicTacToe')">Quiero Jugar</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>MemoTest</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/memotest.jpg">
+    <mat-card-content>
+      <p>A ver que tan bueno eres con tu memoria</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('MemoTest')">Quiero Jugar</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>Anagrama</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/anagrama.jpg">
+    <mat-card-content>
+      <p>Juego de Ingenio</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('Anagrama')">Quiero Jugar</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>Velocidad y agilidad aritmética</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/Mind.jpg">
+    <mat-card-content>
+      <p>Juego de agilidad mental</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('Agilidad')">Quiero Jugar</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>Piedra Papel o Tijera</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/rock-paper.jpg">
+    <mat-card-content>
+      <p>Juega contra la máquina</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('PiedraPapelTijera')">Quiero Jugar</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>Adivina el número secreto</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/Guess.jpg">
+    <mat-card-content>
+      <p>Juego de ingenio</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('Adivina')">Quiero Jugar</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
