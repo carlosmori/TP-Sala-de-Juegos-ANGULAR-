@@ -3,7 +3,7 @@ import { JuegoAgilidad } from '../../clases/juego-agilidad';
 
 import { Subscription } from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
-
+import { randomInt } from '../../../utils/randomIntGenerator.js';
 @Component({
   selector: 'app-agilidad-aritmetica',
   templateUrl: './agilidad-aritmetica.component.html',
@@ -29,16 +29,10 @@ export class AgilidadAritmeticaComponent implements OnInit {
     this.nuevoJuego.gano = false;
   }
 
-  randomInt(min, max) {
-    return min + Math.floor((max - min) * Math.random());
-  }
   NuevoJuego() {
-    this.nuevoJuego.primerNumero = 1;
-    this.nuevoJuego.segundoNumero = 2;
-    this.nuevoJuego.operadorSeleccionado = '+';
-    // this.nuevoJuego.primerNumero = this.randomInt(0, 100);
-    // this.nuevoJuego.segundoNumero = this.randomInt(0, 100);
-    // this.nuevoJuego.operadorSeleccionado = this.nuevoJuego.operadores[this.randomInt(1, 3)];
+    this.nuevoJuego.primerNumero = randomInt(0, 100);
+    this.nuevoJuego.segundoNumero = randomInt(0, 100);
+    this.nuevoJuego.operadorSeleccionado = this.nuevoJuego.operadores[randomInt(1, 3)];
     this.nuevoJuego.resultado = eval(
       `${
         this.nuevoJuego.primerNumero +

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Juego } from '../../clases/juego';
 import { JuegoAnagrama } from '../../clases/juego-anagrama';
-
+import { randomInt } from '../../../utils/randomIntGenerator.js';
 @Component({
   selector: 'app-anagrama',
   templateUrl: './anagrama.component.html',
@@ -16,9 +16,6 @@ export class AnagramaComponent implements OnInit {
   public disableButton = false;
   public showResetButton = false;
 
-  randomInt(min, max): number {
-    return min + Math.floor((max - min) * Math.random());
-  }
   shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
   }
@@ -26,7 +23,7 @@ export class AnagramaComponent implements OnInit {
   constructor() {
     this.nuevoJuego = new JuegoAnagrama();
     const palabraSecreta = this.nuevoJuego.listaDePalabras[
-      this.randomInt(0, this.nuevoJuego.listaDePalabras.length)
+      randomInt(0, this.nuevoJuego.listaDePalabras.length)
     ];
     this.nuevoJuego.palabraSecreta = palabraSecreta;
     this.palabraDesordenada = this.shuffle(this.nuevoJuego.palabraSecreta.split(''));

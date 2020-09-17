@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { JuegoPiedraPapelTijera } from '../../clases/juego-piedra-papel-tijera';
-
+import { randomInt } from '../../../utils/randomIntGenerator.js';
 @Component({
   selector: 'app-piedra-papel-tijera',
   templateUrl: './piedra-papel-tijera.component.html',
@@ -15,17 +15,8 @@ export class PiedraPapelTijeraComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  randomInt(min, max) {
-    return min + Math.floor((max - min) * Math.random());
-  }
-
   pick(move) {
-    // const moves = {
-    //   0: 'rock',
-    //   1: 'paper',
-    //   2: 'siscsors'
-    // };
-    const resultado = this.nuevoJuego.evaluarPartida(this.randomInt(0, 3), move);
+    const resultado = this.nuevoJuego.evaluarPartida(randomInt(0, 3), move);
     if (resultado === 'Empate') {
       this.displayMessage = 'Es un Empate';
     } else if (resultado === 'Gana') {
