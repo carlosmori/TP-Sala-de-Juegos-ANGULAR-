@@ -9,8 +9,12 @@ export class MenuCardComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {}
+
   Juego(tipo: string) {
     switch (tipo) {
+      case 'Anagrama':
+        this.router.navigate(['/Juegos/Anagrama']);
+        break;
       case 'Adivina':
         this.router.navigate(['/Juegos/Adivina']);
         break;
