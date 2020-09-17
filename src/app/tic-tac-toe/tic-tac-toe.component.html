@@ -1,1 +1,7 @@
-<p>tic-tac-toe works!</p>
+<div class="ticTactToe-container">
+    <div class="main-square">
+        <div *ngFor="let row of matrix; index as r" class="fila">
+            <div *ngFor="let col of row; index as c" class="celda" (click)="markSpot(r,c)" >{{col}}</div>
+        </div> 
+    </div>
+</div>

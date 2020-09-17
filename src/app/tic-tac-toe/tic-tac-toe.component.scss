@@ -1,0 +1,29 @@
+.ticTactToe-container{
+    width: 100vw;
+    height: 100vh;
+    background-color: lightsalmon;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .main-square{
+        margin-top: 10%;
+        width: 50%;
+        height: 50%;
+        border: 1px solid black;
+        .fila{
+            display: flex;
+            height: 33.33%;
+            width: 100%;
+        }
+        .celda{
+            height: 100%;
+            width: 33.33%;
+            border: 1px solid black;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            cursor: pointer;
+        }
+    }
+}
