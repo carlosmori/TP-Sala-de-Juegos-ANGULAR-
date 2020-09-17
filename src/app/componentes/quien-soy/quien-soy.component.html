@@ -1,23 +1,17 @@
-  <nav class="navbar navbar-default">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>                        
-        </button>
-        <a class="navbar-brand" href="./">Sala De Juegos</a>
-      </div>
-      <div class="collapse navbar-collapse" id="myNavbar">
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="./QuienSoy#quien">Quien</a></li>
-          <li><a href="/TP_LAV4_2017/QuienSoy#que">Ques es</a></li>
-          <li><a href="./QuienSoy#donde">Donde</a></li>
-        </ul>
-      </div>
-    </div>
-  </nav>
-  
+<mat-toolbar>
+  <a routerLink="/">
+    <span>Sala de Juegos</span>
+  </a>
+  <span class="example-spacer"></span>
+  <div class="actionButtons">
+    <a routerLink="/Registro">
+      <button mat-button>Registrarse</button>
+    </a>
+    <a  routerLink="/Login">
+      <button mat-button color="primary">Log In</button>
+    </a>
+  </div>
+</mat-toolbar>
   <div class="main-container">
     <img src="./assets/imagenes/nuevas/profile.png" class="profile-img" width="350" height="350">
     <h1>Hola!</h1>
@@ -30,20 +24,3 @@
     <div class="about-me">Tengo 25 años, soy Desarrollador Fullstack en Flybondi hace 8 meses y programo hace casi 4. <br> Aparte de la programacion soy amante de los animales y musico por Hobbie</div>
     <div class="tp">Para mi Trabajo Practico he decidido hacer un juego que cuente cierta cantidad de pulsaciones de teclas, me parece un juego sencillo, divertido y competitivo</div>
   </div>
-
-  <!-- First Container -->
-  <!-- <div id ="quiwn"class="container-fluid bg-1 text-center">
-    <h3 class="margin">Quién Soy?</h3>
-    <h3>Carlos Agustin Mori, Alumno de la UTN FRA</h3>
-  </div> -->
-  
-  <!-- Second Container -->
-  <!-- <div id ="que" class="container-fluid bg-2 text-center">
-    <h3 class="margin">Esto es un trabajo práctico</h3>
-    <p>Cada universidad, cada facultad, cada carrera y obviamente cada materia en particular tiene estrategias didácticas y formas de evaluación diferentes. A pesar de que en muchos casos las universidades intentan estandarizar la forma de dictar clase para generar un orden en las planificaciones cuatrimestre a cuatrimestre, las formas de evaluación son elementales tanto para las instituciones y profesores como para los alumnos. A través de la evaluación formativa el educador busca información en el alumno para lograr comprender cómo se está
-      produciendo el proceso de aprendizaje y poder reajustar los objetivos pedagógicos. Y para el alumno es una muestra del progreso que está logrando y si puede aplicar, materializar y darle visibilidad a la comprensión del tema. Según Black y William (1998), la evaluación formativa, ayuda a que los estudiantes sean independientes a la hora del aprendizaje, es decir, se presenta como receptor, autorregulador y centro de esa misma evaluación. </p>
-    <a href="#" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-file"></span> Descargar PDF
-    </a>
-  </div>
-   -->
