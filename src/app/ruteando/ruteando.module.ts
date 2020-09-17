@@ -22,6 +22,8 @@ import { ListadoDePaisesComponent } from '../componentes/listado-de-paises/lista
 import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
 import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
+import { MemoTestComponent } from '../memo-test/memo-test.component';
+import { TicTacToeComponent } from '../tic-tac-toe/tic-tac-toe.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
@@ -44,7 +46,9 @@ const MiRuteo = [
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
-      { path: 'Anagrama', component: AnagramaComponent }
+      { path: 'Anagrama', component: AnagramaComponent },
+      { path: 'MemoTest', component: MemoTestComponent },
+      { path: 'TicTacToe', component: TicTacToeComponent }
     ]
   },
   { path: '**', component: ErrorComponent },

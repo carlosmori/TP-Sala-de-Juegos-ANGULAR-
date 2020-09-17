@@ -12,6 +12,12 @@ export class MenuCardComponent implements OnInit {
 
   Juego(tipo: string) {
     switch (tipo) {
+      case 'TicTacToe':
+        this.router.navigate(['/Juegos/TicTacToe']);
+        break;
+      case 'MemoTest':
+        this.router.navigate(['/Juegos/MemoTest']);
+        break;
       case 'Anagrama':
         this.router.navigate(['/Juegos/Anagrama']);
         break;
