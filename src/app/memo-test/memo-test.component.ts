@@ -6,7 +6,7 @@ import { randomInt } from '../../utils/randomIntGenerator.js';
   templateUrl: './memo-test.component.html',
   styleUrls: ['./memo-test.component.scss']
 })
-export class MemoTestComponent implements OnInit {
+export class MemoTestComponent {
   public nuevoJuego: JuegoMemoTest;
   public displayNumbers = false;
   mostrarInput = false;
@@ -20,8 +20,6 @@ export class MemoTestComponent implements OnInit {
     this.mostrarInput = false;
     this.tiempo = 10;
   }
-
-  ngOnInit(): void {}
 
   comenzar() {
     for (let i = 0; i <= 5; i++) {
@@ -39,5 +37,14 @@ export class MemoTestComponent implements OnInit {
         this.disableButton = true;
       }
     }, 1000);
+  }
+
+  chequearSecuencia(secuenciaNumerosUsuario) {
+    this.nuevoJuego.gano = this.nuevoJuego.chequearSecuencia(secuenciaNumerosUsuario);
+    if (this.nuevoJuego.gano) {
+      alert('Felicidades');
+    } else {
+      alert('Perdiste');
+    }
   }
 }

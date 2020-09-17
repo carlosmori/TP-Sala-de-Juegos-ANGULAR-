@@ -1,23 +1,25 @@
 <div class="memoTest-container">
     <h1>MemoTest</h1>
-    <h4>Cuando clickees comenzar, se mostraran una seria de
-        <br> y deberas anotarlos en orden
+    <h4>Cuando clickees comenzar, se mostraran una serie de
+        <br>Números que deberas memorizar
     </h4>
     <button mat-raised-button [disabled]="disableButton" color="primary" (click)="comenzar()">Comenzar</button>
     <br>
     <br>
     <div *ngIf="displayNumbers" class="numbers-container">
-        <span *ngFor="let item of nuevoJuego.listaDeNumeros">
-          {{item}}
-        </span>
+    <span *ngFor="let item of nuevoJuego.listaDeNumeros">
+        {{item}}
+    </span>
+    </div>
+    <div *ngIf="displayNumbers" class="tiempo">
         {{tiempo}}
     </div>
 
     <div *ngIf="mostrarInput">
-        <form class="example-form">
+        <form class="numbers-form">
             <mat-form-field class="example-full-width">
-              <mat-label>Ingresa secuencia de numeros</mat-label>
-              <input matInput [(ngModel)]="numerosUsuario" name="numerosUsuario">
+              <mat-label>Ingresa secuencia</mat-label>
+              <input matInput [(ngModel)]="numerosUsuario" name="numerosUsuario" type="number">
             </mat-form-field>
             <button mat-raised-button  (click)="chequearSecuencia(numerosUsuario)" color="primary">Chequear Secuencia</button>
           </form>
