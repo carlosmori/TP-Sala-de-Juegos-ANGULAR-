@@ -32,8 +32,8 @@ import { SexoPipe } from './pipes/sexo.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/piedra-papel-tijera.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
-import { MemoTestComponent } from './memo-test/memo-test.component';
-import { TicTacToeComponent } from './tic-tac-toe/tic-tac-toe.component';
+import { MemoTestComponent } from './componentes/memo-test/memo-test.component';
+import { TicTacToeComponent } from './componentes/tic-tac-toe/tic-tac-toe.component';
 
 @NgModule({
   declarations: [
