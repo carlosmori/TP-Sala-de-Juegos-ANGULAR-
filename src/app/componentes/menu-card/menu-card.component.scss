@@ -1,3 +1,14 @@
+mat-toolbar{
+  background-color: #673ab6;
+  a, span{
+      color:white
+  }
+  .actionButtons{
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+  }
+}
 .main-container{
   display: flex;
   flex-wrap: wrap;
