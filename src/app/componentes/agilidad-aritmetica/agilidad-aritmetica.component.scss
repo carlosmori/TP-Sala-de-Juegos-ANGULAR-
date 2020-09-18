@@ -1,0 +1,27 @@
+mat-toolbar{
+    background-color: #673ab6;
+    a, span,mat-icon{
+        color:white
+    }
+    .actionButtons{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+  }
+  .main-container{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    form{
+        height: 50vh;
+        width: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+}
