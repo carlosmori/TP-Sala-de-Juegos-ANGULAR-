@@ -34,6 +34,11 @@ import { PiedraPapelTijeraComponent } from './componentes/piedra-papel-tijera/pi
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { MemoTestComponent } from './componentes/memo-test/memo-test.component';
 import { TicTacToeComponent } from './componentes/tic-tac-toe/tic-tac-toe.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
+import { AngularFirestoreModule } from '@angular/fire/firestore';
+import { environment } from '../environments/environment';
+import { AuthService } from './services/auth.service';
 
 @NgModule({
   declarations: [
@@ -68,14 +73,18 @@ import { TicTacToeComponent } from './componentes/tic-tac-toe/tic-tac-toe.compon
     RuteandoModule,
     HttpModule,
     BrowserAnimationsModule,
-    AngularMaterialModule
+    AngularMaterialModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule,
+    AngularFirestoreModule
   ],
   providers: [
     JuegoServiceService,
     MiHttpService,
     PaisesService,
     ArchivosJugadoresService,
-    JugadoresService
+    JugadoresService,
+    AuthService
   ],
   bootstrap: [AppComponent]
 })
