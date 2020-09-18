@@ -1,26 +1,51 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!--app-menu></app-menu-->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<div style="text-align:center">
+<mat-toolbar>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a  routerLink="/" >
+      <button mat-menu-item>Menu Principal</button>
+    </a>
+    <a  routerLink="/Juegos" >
+      <button mat-menu-item>Juegos</button>
+    </a>
+    <a  routerLink="/QuienSoy" >
+      <button mat-menu-item>Quien Soy?</button>
+    </a>
+  </mat-menu>
+  <span>Sala de Juegos</span>
+  <span class="example-spacer"></span>
+  <div class="actionButtons">
+    <a routerLink="/Registro">
+      <button mat-button>Registrarse</button>
+    </a>
+    <a  routerLink="/Login">
+      <button mat-button color="accent">Log In</button>
+    </a>
+  </div>
+</mat-toolbar>
+
+<div class="main-container">
   <h1>
     {{nuevoJuego.nombre}}!
   </h1>
- </div>
-<h2></h2>
-<form name="juego">
+  <form class="example-form">
+    <mat-form-field class="example-full-width">
+      <mat-label>Ingrese Numero</mat-label>
+      <input matInput [(ngModel)]="nuevoJuego.numeroIngresado" name="numeroIngresado">
+    </mat-form-field>
 
-   <label>ingrese numero:  </label>  <input [(ngModel)]="nuevoJuego.numeroIngresado" placeholder="ingrese numero" name="numeroIngresado" type="text" class="form-control" style="width:50%"/>
-    <h1>{{nuevoJuego.numeroIngresado}}  </h1>
- 
-    <h2 [hidden]="ocultarVerificar"><button  *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" class="btn btn-success btn-lg">Verificar</button></h2>
- 
-    <h2><button *ngIf="nuevoJuego.numeroSecreto==0 " (click)="generarnumero()"  class="btn btn-info btn-lg">Nuevo número secreto</button></h2>
- 
-    <h2><p *ngIf="nuevoJuego.numeroSecreto!=0" ><i class="fa fa-spinner fa-spin"></i>Esperando que ingrese un número</p></h2>
+    <div [hidden]="ocultarVerificar">
+      <button *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" mat-raised-button color="accent">Verificar</button>
+    </div>
 
-    <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-    <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
+    <button *ngIf="nuevoJuego.numeroSecreto==0" (click)="generarnumero()" mat-raised-button color="primary">Nuevo Numero Secreto</button>
+    
+    <!-- <button mat-raised-button color="primary">Loguearse</button> -->
 
+  </form>
+  <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
+  <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
+  <div id="snackbar">{{Mensajes}}</div>
+</div>
 
-</form>
-<div id="snackbar">{{Mensajes}}</div>
