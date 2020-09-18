@@ -1,6 +1,8 @@
 mat-toolbar{
     background-color: #673ab6;
-    a{color:white}
+    a, span, mat-icon{
+        color:white
+    }
     .actionButtons{
         width: 100%;
         display: flex;

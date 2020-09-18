@@ -1,7 +1,16 @@
 <mat-toolbar>
-  <a routerLink="/">
-    <span>Sala de Juegos</span>
-  </a>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a  routerLink="/" >
+      <button mat-menu-item>Menu Principal</button>
+    </a>
+    <a  routerLink="/Juegos" >
+      <button mat-menu-item>Sala de Juegos</button>
+    </a>
+  </mat-menu>
+  <span>Quien Soy?</span>
   <span class="example-spacer"></span>
   <div class="actionButtons">
     <a routerLink="/Registro">
