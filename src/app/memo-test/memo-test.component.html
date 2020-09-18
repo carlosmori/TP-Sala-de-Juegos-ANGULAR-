@@ -1,4 +1,30 @@
-<div class="memoTest-container">
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a  routerLink="/" >
+        <button mat-menu-item>Menu Principal</button>
+      </a>
+      <a  routerLink="/Juegos" >
+        <button mat-menu-item>Juegos</button>
+      </a>
+      <a  routerLink="/QuienSoy" >
+        <button mat-menu-item>Quien Soy?</button>
+      </a>
+    </mat-menu>
+    <span>Sala de Juegos</span>
+    <span class="example-spacer"></span>
+    <div class="actionButtons">
+      <a routerLink="/Registro">
+        <button mat-button>Registrarse</button>
+      </a>
+      <a  routerLink="/Login">
+        <button mat-button color="accent">Log In</button>
+      </a>
+    </div>
+  </mat-toolbar>
+  <div class="memoTest-container">
     <h1>MemoTest</h1>
     <h4>Cuando clickees comenzar, se mostraran una serie de
         <br>Números que deberas memorizar

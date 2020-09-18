@@ -1,4 +1,15 @@
-.anagrama-container{
+mat-toolbar{
+    background-color: #673ab6;
+    a, span,mat-icon{
+        color:white
+    }
+    .actionButtons{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+  }
+  .anagrama-container{
     width: 100vw;
     height: 100vh;
     display: flex;

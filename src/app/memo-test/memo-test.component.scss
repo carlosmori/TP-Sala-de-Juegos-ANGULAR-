@@ -1,9 +1,20 @@
+mat-toolbar{
+    background-color: #673ab6;
+    a, span,mat-icon{
+        color:white
+    }
+    .actionButtons{
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+    }
+  }
 .memoTest-container{
     width: 100vw;
     height: 100vh;
-    background-color: lightcyan;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align:center;
     .numbers-container{
