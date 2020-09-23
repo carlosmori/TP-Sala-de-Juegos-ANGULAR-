@@ -10,13 +10,8 @@ import { AuthService } from '../../services/auth.service';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  private subscription: Subscription;
-  usuario = '';
-  clave = '';
-  progreso: number;
-  progresoMensaje = 'esperando...';
-  logeando = true;
-  ProgresoDeAncho: string;
+  email: string;
+  password: string;
 
   clase = 'progress-bar progress-bar-info progress-bar-striped ';
 
@@ -25,18 +20,17 @@ export class LoginComponent implements OnInit {
     private router: Router,
     public authService: AuthService
   ) {
-    this.progreso = 0;
-    this.ProgresoDeAncho = '0%';
+    this.email = '';
+    this.password = '';
   }
 
   ngOnInit() {}
 
-  Entrar() {
-    if (this.usuario === 'admin' && this.clave === 'admin') {
-      this.router.navigate(['/Principal']);
-    }
+  Login(email, password) {
+    this.authService.Login(email, password);
   }
-  login() {
-    this.authService.SignIn('admin@gmail.com', '123456');
+  FillCredentials() {
+    this.email = 'admin@gmail.com';
+    this.password = '123456';
   }
 }

@@ -11,16 +11,18 @@
 </mat-toolbar>
 <div class="login-container">
   <form class="example-form">
-    <h2>Bienvenido</h2>
+    <h2>Welcome</h2>
+    <button mat-raised-button color="primary" (click)="FillCredentials()">Fill Credentials</button>
+
     <mat-form-field class="example-full-width">
-      <mat-label>Usuario</mat-label>
-      <input matInput>
+      <mat-label>E-mail</mat-label>
+      <input matInput name="email" [(ngModel)]="email">
     </mat-form-field>
     <mat-form-field class="example-full-width">
-      <mat-label>Contraseña</mat-label>
-      <input matInput type="password">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" name="password" [(ngModel)]="password">
     </mat-form-field>
-    <button mat-raised-button color="primary" (click)="login()">Loguearse</button>
+    <button mat-raised-button color="accent" (click)="Login(email,password)">Loguearse</button>
     <!-- <mat-checkbox class="example-margin" [(ngModel)]="checked">Recuerdame</mat-checkbox> -->
     <mat-checkbox class="example-margin">Recuerdame</mat-checkbox>
   </form>

@@ -4,18 +4,23 @@ import { auth } from 'firebase/app';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userData: any; // Save logged in user data
+  isLoggedIn = false;
+  // store the URL so we can redirect after logging in
+  redirectUrl: string;
 
   constructor(
     public afs: AngularFirestore, // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
     public router: Router,
-    public ngZone: NgZone // NgZone service to remove outside scope warning
+    public ngZone: NgZone, // NgZone service to remove outside scope warning
+    private _snackBar: MatSnackBar
   ) {
     /* Saving user data in localstorage when 
     logged in and setting up null when logged out */
@@ -30,7 +35,33 @@ export class AuthService {
       }
     });
   }
-
+  Login(email, password) {
+    return this.afAuth
+      .signInWithEmailAndPassword(email, password)
+      .then((result) => {
+        this.ngZone.run(() => {
+          console.log(result);
+          this.isLoggedIn = true;
+          this._snackBar.open('Welcome', 'Ok', {
+            duration: 3000
+          });
+          this.router.navigate(['/Principal']);
+        });
+        // this.SetUserData(result.user);
+      })
+      .catch((error) => {
+        console.log(error);
+        console.log('Error in Login login');
+        this._snackBar.open(error, 'Ok', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom'
+        });
+      });
+  }
+  Logout() {
+    this.isLoggedIn = false;
+  }
   // Sign in with email/password
   SignIn(email, password) {
     return this.afAuth
@@ -83,10 +114,10 @@ export class AuthService {
   }
 
   // Returns true when user is looged in and email is verified
-  get isLoggedIn(): boolean {
-    const user = JSON.parse(localStorage.getItem('user'));
-    return user !== null && user.emailVerified !== false ? true : false;
-  }
+  // get isLoggedIn(): boolean {
+  //   const user = JSON.parse(localStorage.getItem('user'));
+  //   return user !== null && user.emailVerified !== false ? true : false;
+  // }
 
   // Sign in with Google
   GoogleAuth() {
