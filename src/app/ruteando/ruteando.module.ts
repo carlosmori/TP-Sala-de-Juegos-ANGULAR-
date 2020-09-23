@@ -23,21 +23,27 @@ import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/p
 import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { MemoTestComponent } from '../componentes/memo-test/memo-test.component';
 import { TicTacToeComponent } from '../componentes/tic-tac-toe/tic-tac-toe.component';
+import { AuthGuard } from '../auth/auth.guard';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
-  { path: 'Jugadores', component: JugadoresListadoComponent },
-  { path: '', component: PrincipalComponent },
+  {
+    path: 'Jugadores',
+    component: JugadoresListadoComponent,
+    canActivate: [AuthGuard]
+  },
+  { path: '', component: PrincipalComponent, canActivate: [AuthGuard] },
   { path: 'Login', component: LoginComponent },
-  { path: 'QuienSoy', component: QuienSoyComponent },
-  { path: 'Registro', component: RegistroComponent },
-  { path: 'Principal', component: PrincipalComponent },
-  { path: 'Listado', component: ListadoComponent },
-  { path: 'Paises', component: ListadoDePaisesComponent },
+  { path: 'QuienSoy', component: QuienSoyComponent, canActivate: [AuthGuard] },
+  { path: 'Registro', component: RegistroComponent, canActivate: [AuthGuard] },
+  { path: 'Principal', component: PrincipalComponent, canActivate: [AuthGuard] },
+  { path: 'Listado', component: ListadoComponent, canActivate: [AuthGuard] },
+  { path: 'Paises', component: ListadoDePaisesComponent, canActivate: [AuthGuard] },
 
   {
     path: 'Juegos',
     component: JuegosComponent,
+    canActivate: [AuthGuard],
     children: [
       { path: '', component: MenuCardComponent },
       { path: 'Adivina', component: AdivinaElNumeroComponent },
