@@ -43,7 +43,9 @@ export class AuthService {
           console.log(result);
           this.isLoggedIn = true;
           this._snackBar.open('Welcome', 'Ok', {
-            duration: 3000
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
           });
           this.router.navigate(['/Principal']);
         });

@@ -1,8 +1,34 @@
-<div class="ticTactToe-container">
-    <h1>LOGICA EN PROCESO</h1>
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <a  routerLink="/" >
+        <button mat-menu-item>Menu Principal</button>
+        </a>
+        <a  routerLink="/Juegos" >
+        <button mat-menu-item>Juegos</button>
+        </a>
+        <a  routerLink="/QuienSoy" >
+        <button mat-menu-item>Quien Soy?</button>
+        </a>
+    </mat-menu>
+    <span>Sala de Juegos</span>
+    <span class="example-spacer"></span>
+    <div class="actionButtons">
+        <a routerLink="/Registro">
+        <button mat-button>Registrarse</button>
+        </a>
+        <a  routerLink="/Login">
+        <button mat-button color="accent">Log In</button>
+        </a>
+    </div>
+</mat-toolbar>
+<div class="main-container">
+    <h1>Welcome to Tic Tac Toe</h1>
     <div class="main-square">
-        <div *ngFor="let row of matrix; index as r" class="fila">
-            <div *ngFor="let col of row; index as c" class="celda" (click)="markSpot(r,c)" >{{col}}</div>
+        <div *ngFor="let col of matrix; index as c" class="fila">
+            <div *ngFor="let row of col; index as r" class="celda" (click)="markSpot(c,r)" >{{row}}</div>
         </div> 
     </div>
 </div>
