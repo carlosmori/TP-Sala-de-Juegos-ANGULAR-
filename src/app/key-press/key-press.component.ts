@@ -1,15 +1,5 @@
-import {
-  AfterViewChecked,
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  HostListener,
-  NgZone,
-  OnChanges,
-  OnInit
-} from '@angular/core';
+import { Component, NgZone, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-key-press',
