@@ -30,7 +30,7 @@ import { ListadoDePaisesComponent } from './components/listado-de-paises/listado
 import { InputJugadoresComponent } from './components/input-jugadores/input-jugadores.component';
 import { SexoPipe } from './pipes/sexo.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { PiedraPapelTijeraComponent } from './components/piedra-papel-tijera/piedra-papel-tijera.component';
+import { RockPaperScissorsComponent } from './components/rock-paper-scissors/rock-paper-scissors.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { MemoTestComponent } from './components/memo-test/memo-test.component';
 import { TicTacToeComponent } from './components/tic-tac-toe/tic-tac-toe.component';
@@ -64,7 +64,7 @@ import { KeyPressComponent } from './key-press/key-press.component';
     JugadoresListadoComponent,
     InputJugadoresComponent,
     SexoPipe,
-    PiedraPapelTijeraComponent,
+    RockPaperScissorsComponent,
     MemoTestComponent,
     TicTacToeComponent,
     KeyPressComponent

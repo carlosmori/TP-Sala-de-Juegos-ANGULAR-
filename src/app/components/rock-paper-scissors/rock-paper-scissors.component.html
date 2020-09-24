@@ -1,0 +1,56 @@
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a  routerLink="/" >
+        <button mat-menu-item>Menu Principal</button>
+      </a>
+      <a  routerLink="/Juegos" >
+        <button mat-menu-item>Juegos</button>
+      </a>
+      <a  routerLink="/QuienSoy" >
+        <button mat-menu-item>Quien Soy?</button>
+      </a>
+    </mat-menu>
+    <span>Sala de Juegos</span>
+    <span class="example-spacer"></span>
+    <div class="actionButtons">
+      <a routerLink="/Registro">
+        <button mat-button>Registrarse</button>
+      </a>
+      <a  routerLink="/Login">
+        <button mat-button color="accent">Log In</button>
+      </a>
+    </div>
+  </mat-toolbar>
+<div class="main-container">
+    <h1>Rock, Paper & Scissors</h1>
+    <div class="game-container" *ngIf="gameStarted && !enableReset">
+      <div class="results-container">
+          <div class="rivals">
+              Machine - You 
+          </div>
+          <div>{{newGame?.machineScore}} - {{newGame?.playerScore}}</div>
+      </div>
+      <h2>Pick</h2>
+      <div class="clarification">
+        Whoever reach's 3 , wins!
+      </div>
+      <div class="optionsContainer">
+          <div class="optionContainer">
+              <button mat-raised-button color="accent" (click)="pick(0)" >Rock</button>
+          </div>
+          <div class="optionContainer">
+              <button mat-raised-button color="accent" (click)="pick(1)">Paper</button>
+          </div>
+          <div class="optionContainer">
+              <button mat-raised-button color="accent" (click)="pick(2)">Scissors</button>
+          </div>
+      </div>
+    </div>
+    <div class="begin-game" *ngIf="!gameStarted || enableReset">
+      <button mat-raised-button color="primary" (click)="Begin()" *ngIf="!enableReset">Begin</button>
+      <button mat-raised-button color="accent" (click)="Reset()" *ngIf="enableReset">Reset</button>
+    </div>
+</div>

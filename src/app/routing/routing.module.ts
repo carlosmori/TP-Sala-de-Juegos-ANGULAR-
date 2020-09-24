@@ -19,7 +19,7 @@ import { CabeceraComponent } from '../components/cabecera/cabecera.component';
 import { QuienSoyComponent } from '../components/quien-soy/quien-soy.component';
 import { ListadoDePaisesComponent } from '../components/listado-de-paises/listado-de-paises.component';
 import { JugadoresListadoComponent } from '../components/jugadores-listado/jugadores-listado.component';
-import { PiedraPapelTijeraComponent } from '../components/piedra-papel-tijera/piedra-papel-tijera.component';
+import { RockPaperScissorsComponent } from '../components/rock-paper-scissors/rock-paper-scissors.component';
 import { AnagramaComponent } from '../components/anagrama/anagrama.component';
 import { MemoTestComponent } from '../components/memo-test/memo-test.component';
 import { TicTacToeComponent } from '../components/tic-tac-toe/tic-tac-toe.component';
@@ -51,7 +51,7 @@ const MiRuteo = [
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
-      { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
+      { path: 'PiedraPapelTijera', component: RockPaperScissorsComponent },
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'MemoTest', component: MemoTestComponent },
       { path: 'TicTacToe', component: TicTacToeComponent },
@@ -84,7 +84,7 @@ const routingDevMode = [
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
-      { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
+      { path: 'PiedraPapelTijera', component: RockPaperScissorsComponent },
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'MemoTest', component: MemoTestComponent },
       { path: 'TicTacToe', component: TicTacToeComponent },
