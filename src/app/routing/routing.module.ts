@@ -34,7 +34,7 @@ const MiRuteo = [
     canActivate: [AuthGuard]
   },
   { path: '', component: PrincipalComponent, canActivate: [AuthGuard] },
-  { path: 'Login', component: LoginComponent, canActivate: [AuthGuard] },
+  { path: 'Login', component: LoginComponent },
   { path: 'QuienSoy', component: QuienSoyComponent, canActivate: [AuthGuard] },
   { path: 'Registro', component: RegistroComponent, canActivate: [AuthGuard] },
   { path: 'Principal', component: PrincipalComponent, canActivate: [AuthGuard] },
@@ -96,7 +96,7 @@ const routingDevMode = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routingDevMode)],
+  imports: [RouterModule.forRoot(MiRuteo)],
   exports: [RouterModule]
 })
 export class RuteandoModule {}
