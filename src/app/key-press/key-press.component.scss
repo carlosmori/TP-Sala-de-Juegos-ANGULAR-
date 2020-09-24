@@ -17,6 +17,45 @@ mat-toolbar{
     align-items: center;
     flex-direction: column;
     color: #673ab6;
+    .congratsMessage, .timer{
+        width: 10vw;
+        height: 10vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .congratsMessage{
+        width: 100%;
+        font-size: 3vw;
+        color: #ffd740;
+    }
+    .timer{
+        font-size: 6vw;
+        background-color: #673ab6;
+        border-radius: 50%;
+        color: white;
+        margin: 2rem;
+    }
+    .counterContainer{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 15vw;
+        height: 15vw;
+        .counterLabel{
+            font-size: 1.5rem;
+        }
+        .counter{
+            font-size: 6vw;
+            border-radius: 50%;
+            color: #673ab6;
+            margin-bottom: 2rem;
+        }
+    }
     button{
         cursor: pointer;
     }

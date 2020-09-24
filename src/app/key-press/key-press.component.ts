@@ -8,6 +8,7 @@ import {
   OnChanges,
   OnInit
 } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
 
 @Component({
@@ -15,30 +16,32 @@ import { BehaviorSubject, fromEvent, Subscription } from 'rxjs';
   templateUrl: './key-press.component.html',
   styleUrls: ['./key-press.component.scss']
 })
-export class KeyPressComponent implements OnInit, AfterViewChecked {
+export class KeyPressComponent implements OnInit {
   timer: number;
   interval: any;
   interval2: any;
-  displayCount: boolean;
+  displayCounter: boolean;
+  displayMessage: boolean;
   keyPressCount: number;
   onKeydownHandler: any;
   timer2: number;
 
-  constructor(private cdr: ChangeDetectorRef, public ngZone: NgZone) {
-    this.timer = 5;
+  constructor(public ngZone: NgZone, private _snackBar: MatSnackBar) {
+    this.timer = 2;
     this.keyPressCount = 0;
-    this.displayCount = false;
+    this.displayCounter = false;
+    this.displayMessage = false;
   }
 
   ngOnInit(): void {}
 
-  keyPress(e) {
+  keyPress = (e) => {
     if (e.key == 'c') {
       this.ngZone.run(() => {
         this.keyPressCount++;
       });
     }
-  }
+  };
 
   Begin() {
     this.interval = setInterval(() => {
@@ -51,26 +54,34 @@ export class KeyPressComponent implements OnInit, AfterViewChecked {
   }
 
   StartGame() {
-    this.displayCount = true;
-    this.timer2 = 10;
-    clearInterval(this.interval);
+    this.displayCounter = true;
+    this.timer = 3;
     this.ngZone.runOutsideAngular(() => {
-      clearInterval(this.interval);
-      document.addEventListener('keypress', this.keyPress.bind(this));
-      this.interval2 = setInterval(() => {
+      document.addEventListener('keypress', this.keyPress, false);
+      this.interval = setInterval(() => {
         this.ngZone.run(() => {
-          this.timer2--;
+          this.timer--;
         });
-        if (this.timer2 == 0) {
+        if (this.timer == 0) {
           this.ngZone.run(() => {
-            clearInterval(this.interval2);
-            //document.removeEventListener('keypress', () => {});
+            clearInterval(this.interval);
+            document.removeEventListener('keypress', this.keyPress, false);
+            this.displayMessage = true;
+            this._snackBar.open('Here I would save the score from the player', 'Ok', {
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'bottom'
+            });
           });
         }
       }, 1000);
     });
   }
-  ngAfterViewChecked() {
-    console.log('parent');
+  PlayAgain() {
+    this._snackBar.open('Here I would reset the game', 'Ok', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
   }
 }

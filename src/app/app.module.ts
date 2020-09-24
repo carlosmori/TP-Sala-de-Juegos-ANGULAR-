@@ -40,7 +40,6 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
 import { KeyPressComponent } from './key-press/key-press.component';
-import { KeyPressCounterComponent } from './key-press-counter/key-press-counter.component';
 
 @NgModule({
   declarations: [
@@ -68,8 +67,7 @@ import { KeyPressCounterComponent } from './key-press-counter/key-press-counter.
     PiedraPapelTijeraComponent,
     MemoTestComponent,
     TicTacToeComponent,
-    KeyPressComponent,
-    KeyPressCounterComponent
+    KeyPressComponent
   ],
   imports: [
     BrowserModule,

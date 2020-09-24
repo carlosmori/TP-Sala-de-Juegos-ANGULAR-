@@ -27,15 +27,27 @@
 
 <div class="main-container">
     <h1>Welcome KeyPress</h1>
-    <h2>The Goal is to press as many times as you can the enter button!</h2>
-    <div>
-        timer 1: {{timer}}
-        timer 2: {{timer2}}
+    <h2>The Goal is to press the  'C'  key as many times as you can!</h2>
+    
+    <div *ngIf="!displayMessage">
+        <div class="timer">
+        {{timer}}
+        </div>
+    </div>    
+    <div *ngIf="displayMessage">
+        <div class="congratsMessage">Congratulations you press the key {{keyPressCount}} times!</div>
+    </div>    
+
+    <div *ngIf="displayCounter && !displayMessage" class="counterContainer">
+        <p class="counterLabel">Key Press Count:</p>
+        <div class="counter">
+            {{keyPressCount}}
+        </div>
     </div>
-    <div>
-        {{keyPressCount}}
-        <!-- <app-key-press-counter *ngIf="displayCount"></app-key-press-counter> -->
-        <!-- <app-key-press-counter></app-key-press-counter> -->
-    </div>
-    <button mat-raised-button color="accent" (click)="Begin()">Start</button>
+    <div *ngIf="!displayMessage && !displayCounter">
+        <button mat-raised-button color="accent" (click)="Begin()">Begin</button>
+    </div>    
+    <div *ngIf="displayMessage">
+        <button mat-raised-button color="accent" (click)="PlayAgain()">Play Again</button>
+    </div>    
 </div>
