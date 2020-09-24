@@ -1,30 +1,19 @@
-import { Juego } from '../clases/juego';
+export class JuegoAdivina {
+  secretNumber;
+  inputNumber: number;
+  constructor() {}
 
-export class JuegoAdivina extends Juego {
-  numeroSecreto = 0;
-  numeroIngresado = 0;
-  constructor(nombre?: string, gano?: boolean, jugador?: string) {
-    super('Adivina el número', gano, jugador);
-  }
   public verificar() {
-    if (this.numeroIngresado == this.numeroSecreto) {
-      this.gano = true;
-    }
-    if (this.gano) {
-      return true;
-    } else {
-      return false;
-    }
+    return this.inputNumber == this.secretNumber;
   }
-  public generarnumero() {
-    this.numeroSecreto = 1 + Math.floor((100 - 1) * Math.random());
-    console.info('numero Secreto:' + this.numeroSecreto);
-    this.gano = false;
+  public generateSecretNumber() {
+    this.secretNumber = 1 + Math.floor((100 - 1) * Math.random());
+    console.info('numero Secreto:' + this.secretNumber);
   }
-  public retornarAyuda() {
-    if (this.numeroIngresado < this.numeroSecreto) {
-      return 'Falta';
+  public throwHint() {
+    if (this.inputNumber < this.secretNumber) {
+      return `it's greater`;
     }
-    return 'Te pasate';
+    return `it's smaller`;
   }
 }

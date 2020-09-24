@@ -96,7 +96,7 @@ const routingDevMode = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(MiRuteo)],
+  imports: [RouterModule.forRoot(routingDevMode)],
   exports: [RouterModule]
 })
 export class RuteandoModule {}

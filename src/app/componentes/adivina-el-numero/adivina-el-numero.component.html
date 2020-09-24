@@ -26,26 +26,17 @@
 </mat-toolbar>
 
 <div class="main-container">
-  <h1>
-    {{nuevoJuego.nombre}}!
-  </h1>
+  <h1>Guess the number!</h1>
+  <span class="hint">hint: it's in the range of 0 - 100</span>
   <form class="example-form">
-    <mat-form-field class="example-full-width">
-      <mat-label>Ingrese Numero</mat-label>
-      <input matInput [(ngModel)]="nuevoJuego.numeroIngresado" name="numeroIngresado">
+    <mat-form-field *ngIf="numberGenerated && !enableReset" class="example-full-width">
+      <mat-label>Insert number</mat-label>
+      <input matInput [(ngModel)]="newGame.inputNumber" name="inputNumber">
     </mat-form-field>
 
-    <div [hidden]="ocultarVerificar">
-      <button *ngIf="nuevoJuego.numeroSecreto!=0" (click)="verificar()" mat-raised-button color="accent">Verificar</button>
-    </div>
-
-    <button *ngIf="nuevoJuego.numeroSecreto==0" (click)="generarnumero()" mat-raised-button color="primary">Nuevo Numero Secreto</button>
-    
-    <!-- <button mat-raised-button color="primary">Loguearse</button> -->
-
+    <button *ngIf="displayVerify || newGame.secretNumber && newGame.secretNumber!=0 && !enableReset" (click)="Verify()" mat-raised-button color="accent">Verify</button>
+    <button *ngIf="!newGame.secretNumber || newGame.secretNumber==0 " (click)="Begin()" mat-raised-button color="primary">Begin</button>
+    <button *ngIf="enableReset" (click)="Reset()" mat-raised-button color="accent">Reset</button>
   </form>
-  <h3 [hidden]="!nuevoJuego.gano">usted adivino el número</h3>
-  <h3 [hidden]="nuevoJuego.gano">usted aún no gano </h3>
-  <div id="snackbar">{{Mensajes}}</div>
-</div>
+  </div>
 

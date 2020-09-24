@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { JuegoAdivina } from '../../clases/juego-adivina';
 
 @Component({
@@ -7,77 +8,95 @@ import { JuegoAdivina } from '../../clases/juego-adivina';
   styleUrls: ['./adivina-el-numero.component.scss']
 })
 export class AdivinaElNumeroComponent implements OnInit {
-  @Output() enviarJuego: EventEmitter<any> = new EventEmitter<any>();
+  newGame: JuegoAdivina;
+  counter: number;
+  displayVerify: boolean;
+  numberGenerated: boolean;
+  enableReset: boolean;
 
-  nuevoJuego: JuegoAdivina;
-  Mensajes: string;
-  contador: number;
-  ocultarVerificar: boolean;
-
-  constructor() {
-    this.nuevoJuego = new JuegoAdivina();
-    console.info('numero Secreto:', this.nuevoJuego.numeroSecreto);
-    this.ocultarVerificar = false;
+  constructor(private _snackBar: MatSnackBar) {
+    this.newGame = new JuegoAdivina();
+    this.displayVerify = false;
+    this.numberGenerated = false;
+    console.info('numero Secreto:', this.newGame.secretNumber);
   }
-  generarnumero() {
-    this.nuevoJuego.generarnumero();
-    this.contador = 0;
+  Begin() {
+    this.numberGenerated = true;
+    this.newGame.generateSecretNumber();
+    this.counter = 0;
+    console.info('numero Secreto:', this.newGame.secretNumber);
   }
-  verificar() {
-    this.contador++;
-    this.ocultarVerificar = true;
-    console.info('numero Secreto:', this.nuevoJuego.gano);
-    if (this.nuevoJuego.verificar()) {
-      this.enviarJuego.emit(this.nuevoJuego);
-      this.MostarMensaje('Sos un Genio!!!', true);
-      this.nuevoJuego.numeroSecreto = 0;
+  Verify() {
+    this.counter++;
+    if (this.newGame.verificar()) {
+      this.enableReset = true;
+      this._snackBar.open('You are the Winner!!!!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
     } else {
-      let mensaje: string;
-      switch (this.contador) {
+      switch (this.counter) {
         case 1:
-          mensaje = 'No, intento fallido, animo';
+          this._snackBar.open('Not Yet, you can do it!', 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
         case 2:
-          mensaje = 'No,Te estaras Acercando???';
+          this._snackBar.open('Nop, are you getting closer?', 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
         case 3:
-          mensaje = 'No es, Yo crei que la tercera era la vencida.';
+          this._snackBar.open('Third is the charm? Guess not', 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
         case 4:
-          mensaje = 'No era el  ' + this.nuevoJuego.numeroIngresado;
+          this._snackBar.open(`It wasnt ${this.newGame.inputNumber}`, 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
         case 5:
-          mensaje = ' intentos y nada.';
+          this._snackBar.open(`${this.counter} attempts and counting...`, 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
         case 6:
-          mensaje = 'Afortunado en el amor';
+          this._snackBar.open('Lucky in Love', 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
 
         default:
-          mensaje = 'Ya le erraste ' + this.contador + ' veces';
+          const hint = this.newGame.throwHint();
+          this._snackBar.open(`Here is a little hint, ${hint}`, 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
           break;
       }
-      this.MostarMensaje(
-        '#' + this.contador + ' ' + mensaje + ' ayuda :' + this.nuevoJuego.retornarAyuda()
-      );
     }
-    console.info('numero Secreto:', this.nuevoJuego.gano);
   }
-
-  MostarMensaje(mensaje = 'este es el mensaje', ganador = false) {
-    this.Mensajes = mensaje;
-    const x = document.getElementById('snackbar');
-    if (ganador) {
-      x.className = 'show Ganador';
-    } else {
-      x.className = 'show Perdedor';
-    }
-    const modelo = this;
-    setTimeout(function () {
-      x.className = x.className.replace('show', '');
-      modelo.ocultarVerificar = false;
-    }, 1000);
-    console.info('objeto', x);
+  Reset() {
+    this._snackBar.open(`Here I would reset the game`, 'Ok', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
   }
   ngOnInit() {}
 }

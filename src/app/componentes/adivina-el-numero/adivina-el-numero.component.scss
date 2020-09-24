@@ -16,9 +16,14 @@ mat-toolbar{
       justify-content: center;
       align-items: center;
       flex-direction: column;
+      color: #673ab6;
+      .hint{
+        font-style: italic;
+        margin: 1.5rem;
+      }
       form{
-          height: 50vh;
-          width: 50%;
+        height: 10vh;
+        width: 50%;
         display: flex;
         justify-content: center;
         align-items: center;
