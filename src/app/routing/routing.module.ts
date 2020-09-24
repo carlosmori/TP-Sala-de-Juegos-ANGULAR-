@@ -24,6 +24,7 @@ import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
 import { MemoTestComponent } from '../componentes/memo-test/memo-test.component';
 import { TicTacToeComponent } from '../componentes/tic-tac-toe/tic-tac-toe.component';
 import { AuthGuard } from '../auth/auth.guard';
+import { KeyPressComponent } from '../key-press/key-press.component';
 
 // declaro donde quiero que se dirija
 const MiRuteo = [
@@ -53,7 +54,8 @@ const MiRuteo = [
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'MemoTest', component: MemoTestComponent },
-      { path: 'TicTacToe', component: TicTacToeComponent }
+      { path: 'TicTacToe', component: TicTacToeComponent },
+      { path: 'KeyPress', component: KeyPressComponent }
     ]
   },
   { path: '**', component: ErrorComponent },
@@ -85,7 +87,8 @@ const routingDevMode = [
       { path: 'PiedraPapelTijera', component: PiedraPapelTijeraComponent },
       { path: 'Anagrama', component: AnagramaComponent },
       { path: 'MemoTest', component: MemoTestComponent },
-      { path: 'TicTacToe', component: TicTacToeComponent }
+      { path: 'TicTacToe', component: TicTacToeComponent },
+      { path: 'KeyPress', component: KeyPressComponent }
     ]
   },
   { path: '**', component: ErrorComponent },

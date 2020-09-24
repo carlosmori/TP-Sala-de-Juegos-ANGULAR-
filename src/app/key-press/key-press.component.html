@@ -1,0 +1,41 @@
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <a  routerLink="/" >
+        <button mat-menu-item>Menu Principal</button>
+        </a>
+        <a  routerLink="/Juegos" >
+        <button mat-menu-item>Juegos</button>
+        </a>
+        <a  routerLink="/QuienSoy" >
+        <button mat-menu-item>Quien Soy?</button>
+        </a>
+    </mat-menu>
+    <span>Sala de Juegos</span>
+    <span class="example-spacer"></span>
+    <div class="actionButtons">
+        <a routerLink="/Registro">
+        <button mat-button>Registrarse</button>
+        </a>
+        <a  routerLink="/Login">
+        <button mat-button color="accent">Log In</button>
+        </a>
+    </div>
+</mat-toolbar>
+
+<div class="main-container">
+    <h1>Welcome KeyPress</h1>
+    <h2>The Goal is to press as many times as you can the enter button!</h2>
+    <div>
+        timer 1: {{timer}}
+        timer 2: {{timer2}}
+    </div>
+    <div>
+        {{keyPressCount}}
+        <!-- <app-key-press-counter *ngIf="displayCount"></app-key-press-counter> -->
+        <!-- <app-key-press-counter></app-key-press-counter> -->
+    </div>
+    <button mat-raised-button color="accent" (click)="Begin()">Start</button>
+</div>

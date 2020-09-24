@@ -24,14 +24,27 @@
 <div class="main-container" >
   <mat-card class="juegos-card">
     <mat-card-header>
-      <mat-card-title>TaTeTi (En Proceso)</mat-card-title>
+      <mat-card-title>Press the Key!</mat-card-title>
+    </mat-card-header>
+    <img mat-card-image src="./assets/imagenes/nuevas/keyPress.jpg">
+    <mat-card-content>
+      <p>A game of velocity!</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="Juego('KeyPress')">Play</button>
+    </mat-card-actions>
+  </mat-card>
+
+  <mat-card class="juegos-card">
+    <mat-card-header>
+      <mat-card-title>Tic-Tac-Toe</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/tateti.jpg">
     <mat-card-content>
-      <p>Clasico TaTeTi</p>
+      <p>Clasic TicTacToe</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="Juego('TicTacToe')">Quiero Jugar</button>
+      <button mat-raised-button color="primary" (click)="Juego('TicTacToe')">Play</button>
     </mat-card-actions>
   </mat-card>
 
@@ -41,62 +54,62 @@
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/memotest.jpg">
     <mat-card-content>
-      <p>A ver que tan bueno eres con tu memoria</p>
+      <p>Let's see how good you are with your memory</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="Juego('MemoTest')">Quiero Jugar</button>
+      <button mat-raised-button color="primary" (click)="Juego('MemoTest')">Play</button>
     </mat-card-actions>
   </mat-card>
 
   <mat-card class="juegos-card">
     <mat-card-header>
-      <mat-card-title>Anagrama</mat-card-title>
+      <mat-card-title>Anagramam</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/anagrama.jpg">
     <mat-card-content>
-      <p>Juego de Ingenio</p>
+      <p>Let's get confused</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="Juego('Anagrama')">Quiero Jugar</button>
+      <button mat-raised-button color="primary" (click)="Juego('Anagrama')">Play</button>
     </mat-card-actions>
   </mat-card>
 
   <mat-card class="juegos-card">
     <mat-card-header>
-      <mat-card-title>Velocidad y agilidad aritmética</mat-card-title>
+      <mat-card-title>Agile Maths</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/Mind.jpg">
     <mat-card-content>
-      <p>Juego de agilidad mental</p>
+      <p>Be Quick solving math problems</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="Juego('Agilidad')">Quiero Jugar</button>
+      <button mat-raised-button color="primary" (click)="Juego('Agilidad')">Play</button>
     </mat-card-actions>
   </mat-card>
 
   <mat-card class="juegos-card">
     <mat-card-header>
-      <mat-card-title>Piedra Papel o Tijera</mat-card-title>
+      <mat-card-title>Rock , Paper & Scissors</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/rock-paper.jpg">
     <mat-card-content>
-      <p>Juega contra la máquina</p>
+      <p>Play against the machine this beautiful game!</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="Juego('PiedraPapelTijera')">Quiero Jugar</button>
+      <button mat-raised-button color="primary" (click)="Juego('PiedraPapelTijera')">Play</button>
     </mat-card-actions>
   </mat-card>
 
   <mat-card class="juegos-card">
     <mat-card-header>
-      <mat-card-title>Adivina el número secreto</mat-card-title>
+      <mat-card-title>Guess the secret number!</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/Guess.jpg">
     <mat-card-content>
-      <p>Juego de ingenio</p>
+      <p>Clever Game</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-raised-button color="primary" (click)="Juego('Adivina')">Quiero Jugar</button>
+      <button mat-raised-button color="primary" (click)="Juego('Adivina')">Play</button>
     </mat-card-actions>
   </mat-card>
 </div>

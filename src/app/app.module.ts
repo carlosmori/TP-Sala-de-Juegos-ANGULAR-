@@ -15,7 +15,7 @@ import { PrincipalComponent } from './componentes/principal/principal.component'
 import { AgilidadAritmeticaComponent } from './componentes/agilidad-aritmetica/agilidad-aritmetica.component';
 import { AdivinaMasListadoComponent } from './componentes/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from './componentes/agilidad-mas-listado/agilidad-mas-listado.component';
-import { RuteandoModule } from './ruteando/ruteando.module';
+import { RuteandoModule } from './routing/routing.module';
 import { ListadoComponent } from './componentes/listado/listado.component';
 import { JugadoresListadoComponent } from './componentes/jugadores-listado/jugadores-listado.component';
 import { JuegoServiceService } from './servicios/juego-service.service';
@@ -39,6 +39,8 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { environment } from '../environments/environment';
 import { AuthService } from './services/auth.service';
+import { KeyPressComponent } from './key-press/key-press.component';
+import { KeyPressCounterComponent } from './key-press-counter/key-press-counter.component';
 
 @NgModule({
   declarations: [
@@ -65,7 +67,9 @@ import { AuthService } from './services/auth.service';
     SexoPipe,
     PiedraPapelTijeraComponent,
     MemoTestComponent,
-    TicTacToeComponent
+    TicTacToeComponent,
+    KeyPressComponent,
+    KeyPressCounterComponent
   ],
   imports: [
     BrowserModule,
