@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AdivinaElNumeroComponent } from './adivina-el-numero.component';
+import { GuessTheNumberComponent } from './adivina-el-numero.component';
 
-describe('AdivinaElNumeroComponent', () => {
-  let component: AdivinaElNumeroComponent;
-  let fixture: ComponentFixture<AdivinaElNumeroComponent>;
+describe('GuessTheNumberComponent', () => {
+  let component: GuessTheNumberComponent;
+  let fixture: ComponentFixture<GuessTheNumberComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdivinaElNumeroComponent ]
+      declarations: [ GuessTheNumberComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AdivinaElNumeroComponent);
+    fixture = TestBed.createComponent(GuessTheNumberComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

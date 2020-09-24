@@ -2,27 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 // importo del module principal
 import { RouterModule, Routes } from '@angular/router';
-import { AdivinaElNumeroComponent } from '../componentes/adivina-el-numero/adivina-el-numero.component';
-import { ListadoDeResultadosComponent } from '../componentes/listado-de-resultados/listado-de-resultados.component';
-import { LoginComponent } from '../componentes/login/login.component';
-import { ErrorComponent } from '../componentes/error/error.component';
-import { PrincipalComponent } from '../componentes/principal/principal.component';
-import { AgilidadAritmeticaComponent } from '../componentes/agilidad-aritmetica/agilidad-aritmetica.component';
-import { AdivinaMasListadoComponent } from '../componentes/adivina-mas-listado/adivina-mas-listado.component';
-import { AgilidadMasListadoComponent } from '../componentes/agilidad-mas-listado/agilidad-mas-listado.component';
-import { ListadoComponent } from '../componentes/listado/listado.component';
-import { ListadosComponent } from '../componentes/listados/listados.component';
-import { JuegosComponent } from '../componentes/juegos/juegos.component';
-import { RegistroComponent } from '../componentes/registro/registro.component';
-import { MenuCardComponent } from '../componentes/menu-card/menu-card.component';
-import { CabeceraComponent } from '../componentes/cabecera/cabecera.component';
-import { QuienSoyComponent } from '../componentes/quien-soy/quien-soy.component';
-import { ListadoDePaisesComponent } from '../componentes/listado-de-paises/listado-de-paises.component';
-import { JugadoresListadoComponent } from '../componentes/jugadores-listado/jugadores-listado.component';
-import { PiedraPapelTijeraComponent } from '../componentes/piedra-papel-tijera/piedra-papel-tijera.component';
-import { AnagramaComponent } from '../componentes/anagrama/anagrama.component';
-import { MemoTestComponent } from '../componentes/memo-test/memo-test.component';
-import { TicTacToeComponent } from '../componentes/tic-tac-toe/tic-tac-toe.component';
+import { GuessTheNumberComponent } from '../components/guess-the-number/guess-the-number.component';
+import { ListadoDeResultadosComponent } from '../components/listado-de-resultados/listado-de-resultados.component';
+import { LoginComponent } from '../components/login/login.component';
+import { ErrorComponent } from '../components/error/error.component';
+import { PrincipalComponent } from '../components/principal/principal.component';
+import { AgilidadAritmeticaComponent } from '../components/agilidad-aritmetica/agilidad-aritmetica.component';
+import { AdivinaMasListadoComponent } from '../components/adivina-mas-listado/adivina-mas-listado.component';
+import { AgilidadMasListadoComponent } from '../components/agilidad-mas-listado/agilidad-mas-listado.component';
+import { ListadoComponent } from '../components/listado/listado.component';
+import { ListadosComponent } from '../components/listados/listados.component';
+import { JuegosComponent } from '../components/juegos/juegos.component';
+import { RegistroComponent } from '../components/registro/registro.component';
+import { MenuCardComponent } from '../components/menu-card/menu-card.component';
+import { CabeceraComponent } from '../components/cabecera/cabecera.component';
+import { QuienSoyComponent } from '../components/quien-soy/quien-soy.component';
+import { ListadoDePaisesComponent } from '../components/listado-de-paises/listado-de-paises.component';
+import { JugadoresListadoComponent } from '../components/jugadores-listado/jugadores-listado.component';
+import { PiedraPapelTijeraComponent } from '../components/piedra-papel-tijera/piedra-papel-tijera.component';
+import { AnagramaComponent } from '../components/anagrama/anagrama.component';
+import { MemoTestComponent } from '../components/memo-test/memo-test.component';
+import { TicTacToeComponent } from '../components/tic-tac-toe/tic-tac-toe.component';
 import { AuthGuard } from '../auth/auth.guard';
 import { KeyPressComponent } from '../key-press/key-press.component';
 
@@ -47,7 +47,7 @@ const MiRuteo = [
     canActivate: [AuthGuard],
     children: [
       { path: '', component: MenuCardComponent },
-      { path: 'Adivina', component: AdivinaElNumeroComponent },
+      { path: 'Adivina', component: GuessTheNumberComponent },
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },
@@ -80,7 +80,7 @@ const routingDevMode = [
     component: JuegosComponent,
     children: [
       { path: '', component: MenuCardComponent },
-      { path: 'Adivina', component: AdivinaElNumeroComponent },
+      { path: 'Adivina', component: GuessTheNumberComponent },
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: AgilidadAritmeticaComponent },

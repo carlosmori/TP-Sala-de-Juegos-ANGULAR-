@@ -132,7 +132,7 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 const MiRuteo = [{path: 'error' , component: ErrorComponent},
 {path: 'Login' , component: LoginComponent},
 {path: 'Principal' , component: PrincipalComponent , pathMatch: 'full'},
-{path: 'Adivina' , component: AdivinaElNumeroComponent},
+{path: 'Adivina' , component: GuessTheNumberComponent},
 {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
 {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
 {path: 'Agilidad' , component: AgilidadAritmeticaComponent},
@@ -160,7 +160,7 @@ AppModule = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_1__angular_core__["M" /* NgModule */])({
         declarations: [
             __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
-            __WEBPACK_IMPORTED_MODULE_4__componentes_adivina_el_numero_adivina_el_numero_component__["a" /* AdivinaElNumeroComponent */],
+            __WEBPACK_IMPORTED_MODULE_4__componentes_adivina_el_numero_adivina_el_numero_component__["a" /* GuessTheNumberComponent */],
             __WEBPACK_IMPORTED_MODULE_5__componentes_listado_de_resultados_listado_de_resultados_component__["a" /* ListadoDeResultadosComponent */],
             __WEBPACK_IMPORTED_MODULE_10__componentes_error_error_component__["a" /* ErrorComponent */],
             __WEBPACK_IMPORTED_MODULE_11__componentes_principal_principal_component__["a" /* PrincipalComponent */],
@@ -316,7 +316,7 @@ module.exports = module.exports.toString();
 
 /***/ }),
 
-/***/ "../../../../../src/app/componentes/adivina-el-numero/adivina-el-numero.component.html":
+/***/ "../../../../../src/app/componentes/adivina-el-numero/guess-the-number.component.html":
 /***/ (function(module, exports) {
 
 module.exports = "<!--The content below is only a placeholder and can be replaced.-->\n<!--app-menu></app-menu-->\n<link rel=\"stylesheet\" href=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css\">\n<div style=\"text-align:center\">\n  <h1>\n    {{nuevoJuego.nombre}}!\n  </h1>\n </div>\n<h2></h2>\n<form name=\"juego\">\n\n   <label>ingrese numero:  </label>  <input [(ngModel)]=\"nuevoJuego.numeroIngresado\" placeholder=\"ingrese numero\" name=\"numeroIngresado\" type=\"text\" class=\"form-control\" style=\"width:50%\"/>\n    <h1>{{nuevoJuego.numeroIngresado}}  </h1>\n \n    <h2 [hidden]=\"ocultarVerificar\"><button  *ngIf=\"nuevoJuego.numeroSecreto!=0\" (click)=\"verificar()\" class=\"btn btn-success btn-lg\">Verificar</button></h2>\n \n    <h2><button *ngIf=\"nuevoJuego.numeroSecreto==0 \" (click)=\"generarnumero()\"  class=\"btn btn-info btn-lg\">Nuevo número secreto</button></h2>\n \n    <h2><p *ngIf=\"nuevoJuego.numeroSecreto!=0\" ><i class=\"fa fa-spinner fa-spin\"></i>Esperando que ingrese un número</p></h2>\n\n    <h3 [hidden]=\"!nuevoJuego.gano\">usted adivino el número</h3>\n    <h3 [hidden]=\"nuevoJuego.gano\">usted aún no gano </h3>\n\n\n</form>\n<div id=\"snackbar\">{{Mensajes}}</div>"
@@ -327,7 +327,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AdivinaElNumeroComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return GuessTheNumberComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clases_juego_adivina__ = __webpack_require__("../../../../../src/app/clases/juego-adivina.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -341,18 +341,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AdivinaElNumeroComponent = (function () {
-    function AdivinaElNumeroComponent() {
+var GuessTheNumberComponent = (function () {
+    function GuessTheNumberComponent() {
         this.enviarJuego = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.nuevoJuego = new __WEBPACK_IMPORTED_MODULE_1__clases_juego_adivina__["a" /* JuegoAdivina */]();
         console.info("numero Secreto:", this.nuevoJuego.numeroSecreto);
         this.ocultarVerificar = false;
     }
-    AdivinaElNumeroComponent.prototype.generarnumero = function () {
+    GuessTheNumberComponent.prototype.generarnumero = function () {
         this.nuevoJuego.generarnumero();
         this.contador = 0;
     };
-    AdivinaElNumeroComponent.prototype.verificar = function () {
+    GuessTheNumberComponent.prototype.verificar = function () {
         this.contador++;
         this.ocultarVerificar = true;
         console.info("numero Secreto:", this.nuevoJuego.gano);
@@ -390,7 +390,7 @@ var AdivinaElNumeroComponent = (function () {
         }
         console.info("numero Secreto:", this.nuevoJuego.gano);
     };
-    AdivinaElNumeroComponent.prototype.MostarMensaje = function (mensaje, ganador) {
+    GuessTheNumberComponent.prototype.MostarMensaje = function (mensaje, ganador) {
         if (mensaje === void 0) { mensaje = "este es el mensaje"; }
         if (ganador === void 0) { ganador = false; }
         this.Mensajes = mensaje;
@@ -408,22 +408,22 @@ var AdivinaElNumeroComponent = (function () {
         }, 3000);
         console.info("objeto", x);
     };
-    AdivinaElNumeroComponent.prototype.ngOnInit = function () {
+    GuessTheNumberComponent.prototype.ngOnInit = function () {
     };
-    return AdivinaElNumeroComponent;
+    return GuessTheNumberComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Output */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
-], AdivinaElNumeroComponent.prototype, "enviarJuego", void 0);
-AdivinaElNumeroComponent = __decorate([
+], GuessTheNumberComponent.prototype, "enviarJuego", void 0);
+GuessTheNumberComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
-        selector: 'app-adivina-el-numero',
-        template: __webpack_require__("../../../../../src/app/componentes/adivina-el-numero/adivina-el-numero.component.html"),
+        selector: 'app-guess-the-number',
+        template: __webpack_require__("../../../../../src/app/componentes/adivina-el-numero/guess-the-number.component.html"),
         styles: [__webpack_require__("../../../../../src/app/componentes/adivina-el-numero/adivina-el-numero.component.css")]
     }),
     __metadata("design:paramtypes", [])
-], AdivinaElNumeroComponent);
+], GuessTheNumberComponent);
 
 var _a;
 //# sourceMappingURL=adivina-el-numero.component.js.map
@@ -451,7 +451,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/componentes/adivina-mas-listado/adivina-mas-listado.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "\n<app-adivina-el-numero (enviarJuego)=\"tomarJuegoTerminado($event)\">   </app-adivina-el-numero> \n<h1> listado </h1>\n<app-listado-de-resultados [listado]=\"listadoParaCompartir\"> </app-listado-de-resultados>\n\n"
+module.exports = "\n<app-guess-the-number (enviarJuego)=\"tomarJuegoTerminado($event)\">   </app-guess-the-number> \n<h1> listado </h1>\n<app-listado-de-resultados [listado]=\"listadoParaCompartir\"> </app-listado-de-resultados>\n\n"
 
 /***/ }),
 
@@ -1778,7 +1778,7 @@ var MiRuteo = [
     { path: 'Juegos',
         component: __WEBPACK_IMPORTED_MODULE_10__componentes_juegos_juegos_component__["a" /* JuegosComponent */],
         children: [{ path: '', component: __WEBPACK_IMPORTED_MODULE_12__componentes_menu_card_menu_card_component__["a" /* MenuCardComponent */] },
-            { path: 'Adivina', component: __WEBPACK_IMPORTED_MODULE_2__componentes_adivina_el_numero_adivina_el_numero_component__["a" /* AdivinaElNumeroComponent */] },
+            { path: 'Adivina', component: __WEBPACK_IMPORTED_MODULE_2__componentes_adivina_el_numero_adivina_el_numero_component__["a" /* GuessTheNumberComponent */] },
             { path: 'AdivinaMasListado', component: __WEBPACK_IMPORTED_MODULE_7__componentes_adivina_mas_listado_adivina_mas_listado_component__["a" /* AdivinaMasListadoComponent */] },
             { path: 'AgilidadaMasListado', component: __WEBPACK_IMPORTED_MODULE_8__componentes_agilidad_mas_listado_agilidad_mas_listado_component__["a" /* AgilidadMasListadoComponent */] },
             { path: 'Agilidad', component: __WEBPACK_IMPORTED_MODULE_6__componentes_agilidad_aritmetica_agilidad_aritmetica_component__["a" /* AgilidadAritmeticaComponent */] }]

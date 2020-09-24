@@ -3,11 +3,11 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { JuegoAdivina } from '../../clases/juego-adivina';
 
 @Component({
-  selector: 'app-adivina-el-numero',
-  templateUrl: './adivina-el-numero.component.html',
-  styleUrls: ['./adivina-el-numero.component.scss']
+  selector: 'app-guess-the-number',
+  templateUrl: './guess-the-number.component.html',
+  styleUrls: ['./guess-the-number.component.scss']
 })
-export class AdivinaElNumeroComponent implements OnInit {
+export class GuessTheNumberComponent implements OnInit {
   newGame: JuegoAdivina;
   counter: number;
   displayVerify: boolean;
