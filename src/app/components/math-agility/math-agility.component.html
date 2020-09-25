@@ -1,0 +1,57 @@
+<mat-toolbar>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a  routerLink="/" >
+      <button mat-menu-item>Menu Principal</button>
+    </a>
+    <a  routerLink="/Juegos" >
+      <button mat-menu-item>Juegos</button>
+    </a>
+    <a  routerLink="/QuienSoy" >
+      <button mat-menu-item>Quien Soy?</button>
+    </a>
+  </mat-menu>
+  <span>Sala de Juegos</span>
+  <span class="example-spacer"></span>
+  <div class="actionButtons">
+    <a routerLink="/Registro">
+      <button mat-button>Registrarse</button>
+    </a>
+    <a  routerLink="/Login">
+      <button mat-button color="accent">Log In</button>
+    </a>
+  </div>
+</mat-toolbar>
+
+<div class="main-container">
+  <h1>
+    Math Agility
+  </h1>
+  <div class="game-container" *ngIf="gameStarted">  
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>First Number</mat-label>
+        <input matInput readonly [(ngModel)]="newGame.firstNumber" name="firstNumber">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Operator</mat-label>
+        <input matInput readonly [(ngModel)]="newGame.selectedOperator" name="operador">
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Second Number</mat-label>
+        <input matInput readonly [(ngModel)]="newGame.secondNumber" name="secondNumber">
+      </mat-form-field>
+      <mat-divider></mat-divider>
+      <mat-form-field class="example-full-width">
+        <mat-label>Answer</mat-label>
+        <input matInput [(ngModel)]="newGame.inputNumber" name="inputNumber">
+      </mat-form-field>
+        <button (click)="Verify()" mat-raised-button color="accent" *ngIf="displayVerify">Verify {{time}}</button>
+        <button (click)="Begin()" mat-raised-button color="accent" *ngIf="!displayVerify" >Nuevo</button>
+    </form>
+  </div>
+  <button *ngIf="!gameStarted && !enableReset" (click)="Begin()" mat-raised-button color="primary">Begin</button>
+  <button *ngIf="!gameStarted && enableReset" (click)="Reset()" mat-raised-button color="accent">Reset</button>
+</div>

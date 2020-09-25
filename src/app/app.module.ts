@@ -12,7 +12,7 @@ import { JugadoresService } from './servicios/jugadores.service';
 import { ArchivosJugadoresService } from './servicios/archivos-jugadores.service';
 import { ErrorComponent } from './components/error/error.component';
 import { PrincipalComponent } from './components/principal/principal.component';
-import { AgilidadAritmeticaComponent } from './components/agilidad-aritmetica/agilidad-aritmetica.component';
+import { MathAgilityComponent } from './components/math-agility/math-agility.component';
 import { AdivinaMasListadoComponent } from './components/adivina-mas-listado/adivina-mas-listado.component';
 import { AgilidadMasListadoComponent } from './components/agilidad-mas-listado/agilidad-mas-listado.component';
 import { RuteandoModule } from './routing/routing.module';
@@ -49,7 +49,7 @@ import { KeyPressComponent } from './key-press/key-press.component';
     ErrorComponent,
     PrincipalComponent,
     LoginComponent,
-    AgilidadAritmeticaComponent,
+    MathAgilityComponent,
     AdivinaMasListadoComponent,
     AgilidadMasListadoComponent,
     ListadoComponent,

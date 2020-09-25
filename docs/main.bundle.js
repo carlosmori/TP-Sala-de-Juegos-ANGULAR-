@@ -135,7 +135,7 @@ const MiRuteo = [{path: 'error' , component: ErrorComponent},
 {path: 'Adivina' , component: GuessTheNumberComponent},
 {path: 'AdivinaMasListado' , component: AdivinaMasListadoComponent},
 {path: 'AgilidadaMasListado' , component: AgilidadMasListadoComponent},
-{path: 'Agilidad' , component: AgilidadAritmeticaComponent},
+{path: 'Agilidad' , component: MathAgilityComponent},
 {path: '' , component: LoginComponent , pathMatch: 'full'},
 
 {path: '**' , component: ErrorComponent} ];
@@ -165,7 +165,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_10__componentes_error_error_component__["a" /* ErrorComponent */],
             __WEBPACK_IMPORTED_MODULE_11__componentes_principal_principal_component__["a" /* PrincipalComponent */],
             __WEBPACK_IMPORTED_MODULE_6__componentes_login_login_component__["a" /* LoginComponent */],
-            __WEBPACK_IMPORTED_MODULE_12__componentes_agilidad_aritmetica_agilidad_aritmetica_component__["a" /* AgilidadAritmeticaComponent */],
+            __WEBPACK_IMPORTED_MODULE_12__componentes_agilidad_aritmetica_agilidad_aritmetica_component__["a" /* MathAgilityComponent */],
             __WEBPACK_IMPORTED_MODULE_13__componentes_menu_menu_component__["a" /* MenuComponent */],
             __WEBPACK_IMPORTED_MODULE_14__componentes_adivina_mas_listado_adivina_mas_listado_component__["a" /* AdivinaMasListadoComponent */],
             __WEBPACK_IMPORTED_MODULE_15__componentes_agilidad_mas_listado_agilidad_mas_listado_component__["a" /* AgilidadMasListadoComponent */],
@@ -525,7 +525,7 @@ module.exports = "<!--The content below is only a placeholder and can be replace
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AgilidadAritmeticaComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MathAgilityComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__clases_juego_agilidad__ = __webpack_require__("../../../../../src/app/clases/juego-agilidad.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -539,17 +539,17 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
-var AgilidadAritmeticaComponent = (function () {
-    function AgilidadAritmeticaComponent() {
+var MathAgilityComponent = (function () {
+    function MathAgilityComponent() {
         this.enviarJuego = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]();
         this.ocultarVerificar = true;
         this.Tiempo = 5;
         this.nuevoJuego = new __WEBPACK_IMPORTED_MODULE_1__clases_juego_agilidad__["a" /* JuegoAgilidad */]();
         console.info("Inicio agilidad");
     }
-    AgilidadAritmeticaComponent.prototype.ngOnInit = function () {
+    MathAgilityComponent.prototype.ngOnInit = function () {
     };
-    AgilidadAritmeticaComponent.prototype.NuevoJuego = function () {
+    MathAgilityComponent.prototype.NuevoJuego = function () {
         var _this = this;
         this.ocultarVerificar = false;
         this.repetidor = setInterval(function () {
@@ -563,24 +563,24 @@ var AgilidadAritmeticaComponent = (function () {
             }
         }, 900);
     };
-    AgilidadAritmeticaComponent.prototype.verificar = function () {
+    MathAgilityComponent.prototype.verificar = function () {
         this.ocultarVerificar = false;
         clearInterval(this.repetidor);
     };
-    return AgilidadAritmeticaComponent;
+    return MathAgilityComponent;
 }());
 __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["U" /* Output */])(),
     __metadata("design:type", typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_0__angular_core__["x" /* EventEmitter */]) === "function" && _a || Object)
-], AgilidadAritmeticaComponent.prototype, "enviarJuego", void 0);
-AgilidadAritmeticaComponent = __decorate([
+], MathAgilityComponent.prototype, "enviarJuego", void 0);
+MathAgilityComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-agilidad-aritmetica',
         template: __webpack_require__("../../../../../src/app/componentes/agilidad-aritmetica/agilidad-aritmetica.component.html"),
         styles: [__webpack_require__("../../../../../src/app/componentes/agilidad-aritmetica/agilidad-aritmetica.component.css")]
     }),
     __metadata("design:paramtypes", [])
-], AgilidadAritmeticaComponent);
+], MathAgilityComponent);
 
 var _a;
 //# sourceMappingURL=agilidad-aritmetica.component.js.map
@@ -1781,7 +1781,7 @@ var MiRuteo = [
             { path: 'Adivina', component: __WEBPACK_IMPORTED_MODULE_2__componentes_adivina_el_numero_adivina_el_numero_component__["a" /* GuessTheNumberComponent */] },
             { path: 'AdivinaMasListado', component: __WEBPACK_IMPORTED_MODULE_7__componentes_adivina_mas_listado_adivina_mas_listado_component__["a" /* AdivinaMasListadoComponent */] },
             { path: 'AgilidadaMasListado', component: __WEBPACK_IMPORTED_MODULE_8__componentes_agilidad_mas_listado_agilidad_mas_listado_component__["a" /* AgilidadMasListadoComponent */] },
-            { path: 'Agilidad', component: __WEBPACK_IMPORTED_MODULE_6__componentes_agilidad_aritmetica_agilidad_aritmetica_component__["a" /* AgilidadAritmeticaComponent */] }]
+            { path: 'Agilidad', component: __WEBPACK_IMPORTED_MODULE_6__componentes_agilidad_aritmetica_agilidad_aritmetica_component__["a" /* MathAgilityComponent */] }]
     },
     { path: '**', component: __WEBPACK_IMPORTED_MODULE_4__componentes_error_error_component__["a" /* ErrorComponent */] },
     { path: 'error', component: __WEBPACK_IMPORTED_MODULE_4__componentes_error_error_component__["a" /* ErrorComponent */] }
