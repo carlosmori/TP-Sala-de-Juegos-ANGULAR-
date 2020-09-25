@@ -19,7 +19,7 @@ import { QuienSoyComponent } from '../components/quien-soy/quien-soy.component';
 import { ListadoDePaisesComponent } from '../components/listado-de-paises/listado-de-paises.component';
 import { JugadoresListadoComponent } from '../components/jugadores-listado/jugadores-listado.component';
 import { RockPaperScissorsComponent } from '../components/rock-paper-scissors/rock-paper-scissors.component';
-import { AnagramaComponent } from '../components/anagrama/anagrama.component';
+import { AnagramamComponent } from '../components/anagramam/anagramam.component';
 import { MemoTestComponent } from '../components/memo-test/memo-test.component';
 import { TicTacToeComponent } from '../components/tic-tac-toe/tic-tac-toe.component';
 import { AuthGuard } from '../auth/auth.guard';
@@ -50,7 +50,7 @@ const MiRuteo = [
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'Agilidad', component: MathAgilityComponent },
       { path: 'PiedraPapelTijera', component: RockPaperScissorsComponent },
-      { path: 'Anagrama', component: AnagramaComponent },
+      { path: 'Anagrama', component: AnagramamComponent },
       { path: 'MemoTest', component: MemoTestComponent },
       { path: 'TicTacToe', component: TicTacToeComponent },
       { path: 'KeyPress', component: KeyPressComponent }
@@ -82,7 +82,7 @@ const routingDevMode = [
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
       { path: 'Agilidad', component: MathAgilityComponent },
       { path: 'PiedraPapelTijera', component: RockPaperScissorsComponent },
-      { path: 'Anagrama', component: AnagramaComponent },
+      { path: 'Anagrama', component: AnagramamComponent },
       { path: 'MemoTest', component: MemoTestComponent },
       { path: 'TicTacToe', component: TicTacToeComponent },
       { path: 'KeyPress', component: KeyPressComponent }

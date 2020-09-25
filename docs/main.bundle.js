@@ -176,7 +176,7 @@ AppModule = __decorate([
             __WEBPACK_IMPORTED_MODULE_22__componentes_menu_card_menu_card_component__["a" /* MenuCardComponent */],
             __WEBPACK_IMPORTED_MODULE_23__componentes_cabecera_cabecera_component__["a" /* CabeceraComponent */],
             __WEBPACK_IMPORTED_MODULE_24__componentes_quien_soy_quien_soy_component__["a" /* QuienSoyComponent */],
-            __WEBPACK_IMPORTED_MODULE_25__componentes_anagrama_anagrama_component__["a" /* AnagramaComponent */],
+            __WEBPACK_IMPORTED_MODULE_25__componentes_anagrama_anagrama_component__["a" /* AnagramamComponent */],
             __WEBPACK_IMPORTED_MODULE_26__componentes_listado_de_paises_listado_de_paises_component__["a" /* ListadoDePaisesComponent */],
             __WEBPACK_IMPORTED_MODULE_27__componentes_mapa_de_google_mapa_de_google_component__["a" /* MapaDeGoogleComponent */],
         ],
@@ -682,7 +682,7 @@ module.exports = "<p>\n  anagrama works!\n</p>\n"
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnagramaComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AnagramamComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../core/@angular/core.es5.js");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -694,21 +694,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
-var AnagramaComponent = (function () {
-    function AnagramaComponent() {
+var AnagramamComponent = (function () {
+    function AnagramamComponent() {
     }
-    AnagramaComponent.prototype.ngOnInit = function () {
+    AnagramamComponent.prototype.ngOnInit = function () {
     };
-    return AnagramaComponent;
+    return AnagramamComponent;
 }());
-AnagramaComponent = __decorate([
+AnagramamComponent = __decorate([
     Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["o" /* Component */])({
         selector: 'app-anagrama',
         template: __webpack_require__("../../../../../src/app/componentes/anagrama/anagrama.component.html"),
         styles: [__webpack_require__("../../../../../src/app/componentes/anagrama/anagrama.component.css")]
     }),
     __metadata("design:paramtypes", [])
-], AnagramaComponent);
+], AnagramamComponent);
 
 //# sourceMappingURL=anagrama.component.js.map
 

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AnagramaComponent } from './anagrama.component';
+import { AnagramamComponent } from './anagrama.component';
 
-describe('AnagramaComponent', () => {
-  let component: AnagramaComponent;
-  let fixture: ComponentFixture<AnagramaComponent>;
+describe('AnagramamComponent', () => {
+  let component: AnagramamComponent;
+  let fixture: ComponentFixture<AnagramamComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AnagramaComponent ]
+      declarations: [ AnagramamComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AnagramaComponent);
+    fixture = TestBed.createComponent(AnagramamComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

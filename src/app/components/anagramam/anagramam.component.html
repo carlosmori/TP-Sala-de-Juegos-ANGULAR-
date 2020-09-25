@@ -1,0 +1,47 @@
+<mat-toolbar>
+  <button mat-icon-button [matMenuTriggerFor]="menu">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <a  routerLink="/" >
+      <button mat-menu-item>Menu Principal</button>
+    </a>
+    <a  routerLink="/Juegos" >
+      <button mat-menu-item>Juegos</button>
+    </a>
+    <a  routerLink="/QuienSoy" >
+      <button mat-menu-item>Quien Soy?</button>
+    </a>
+  </mat-menu>
+  <span>Sala de Juegos</span>
+  <span class="example-spacer"></span>
+  <div class="actionButtons">
+    <a routerLink="/Registro">
+      <button mat-button>Registrarse</button>
+    </a>
+    <a  routerLink="/Login">
+      <button mat-button color="accent">Log In</button>
+    </a>
+  </div>
+</mat-toolbar>
+<div class="main-container">
+  <h1>Guess the messy word!</h1>
+  <div class="game-container" *ngIf="!enableReset && gameStarted">
+    <h2 class="palabra-desordenada">
+      {{unorderedWord}}
+    </h2>
+    <form class="example-form">
+      <mat-form-field class="example-full-width">
+        <mat-label>Write the word</mat-label>
+        <input matInput [(ngModel)]="userWord" name="userWord">
+      </mat-form-field>
+      <button mat-raised-button [disabled]="disableButton" (click)="CheckWord(userWord)" color="primary">Check</button>
+    </form>
+
+    <h4>Attempts: <span class="attempts">{{attempts}}</span></h4>
+
+  </div>
+  <button mat-raised-button *ngIf="enableReset && gameStarted" (click)="Reset()" color="accent">Reset</button>
+  <button mat-raised-button *ngIf="!enableReset || !gameStarted" (click)="Begin()" color="primary">Begin</button>
+
+</div>

@@ -9,23 +9,23 @@ mat-toolbar{
         justify-content: flex-end;
     }
   }
-  .anagrama-container{
+  .main-container{
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    h1{
-        color: purple;
-    }
+    color: #673ab6;
     .palabra-desordenada{
         font-size: 2rem;
-        color: purple;
         text-decoration: underline;
     }
     form{
         display: flex;
         flex-direction: column;
+    }
+    .attempts{
+        color: #f44336;
     }
 }
