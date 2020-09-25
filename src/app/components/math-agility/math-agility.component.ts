@@ -22,7 +22,7 @@ export class MathAgilityComponent implements OnInit {
     this.displayVerify = false;
     this.gameStarted = false;
     this.enableReset = false;
-    this.time = 3;
+    this.time = 5;
     this.newGame = new MathAgilityGame();
   }
 
@@ -36,8 +36,8 @@ export class MathAgilityComponent implements OnInit {
   }
   Begin() {
     this.gameStarted = true;
-    this.newGame.firstNumber = randomInt(0, 100);
-    this.newGame.secondNumber = randomInt(0, 100);
+    this.newGame.firstNumber = randomInt(0, 10);
+    this.newGame.secondNumber = randomInt(0, 10);
     this.newGame.selectedOperator = this.newGame.operators[randomInt(1, 3)];
     this.newGame.result = eval(
       `${this.newGame.firstNumber + this.newGame.selectedOperator + this.newGame.secondNumber}`
