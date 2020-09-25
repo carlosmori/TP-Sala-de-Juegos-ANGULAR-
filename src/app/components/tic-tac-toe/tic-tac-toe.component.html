@@ -25,10 +25,12 @@
     </div>
 </mat-toolbar>
 <div class="main-container">
-    <h1>Welcome to Tic Tac Toe</h1>
-    <div class="main-square">
+    <h1>Tic Tac Toe</h1>
+    <div class="main-square" *ngIf="gameStarted && !enableReset">
         <div *ngFor="let col of matrix; index as c" class="fila">
-            <div *ngFor="let row of col; index as r" class="celda" (click)="markSpot(c,r)" >{{row}}</div>
+            <div *ngFor="let row of col; index as r" class="celda" (click)="MarkSpot(c,r)" >{{row}}</div>
         </div> 
     </div>
+    <button *ngIf="!gameStarted && !enableReset" (click)="Begin()" mat-raised-button color="primary">Begin</button>
+    <button *ngIf="enableReset" (click)="Reset()" mat-raised-button color="accent">Reset</button>
 </div>

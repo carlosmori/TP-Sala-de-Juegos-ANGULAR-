@@ -11,8 +11,12 @@ import { BehaviorSubject } from 'rxjs';
 export class TicTacToeComponent implements OnInit {
   public nextMove: BehaviorSubject<string>;
   moves = 0;
+  gameStarted: boolean;
+  enableReset: boolean;
   constructor(private _snackBar: MatSnackBar) {
     this.nextMove = new BehaviorSubject('X');
+    this.gameStarted = false;
+    this.enableReset = false;
   }
   matrix = [
     [null, null, null],
@@ -20,8 +24,27 @@ export class TicTacToeComponent implements OnInit {
     [null, null, null]
   ];
   ngOnInit(): void {}
+  Reset() {
+    this._snackBar.open('Here I would Reset', 'Ok', {
+      duration: 4000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
+    // this.moves = 0;
+    // this.matrix = [
+    //   [null, null, null],
+    //   [null, null, null],
+    //   [null, null, null]
+    // ];
+  }
 
-  markSpot(col, row) {
+  Begin() {
+    this.gameStarted = true;
+  }
+  MarkSpot(col, row) {
+    if (this.matrix[col][row]) {
+      return;
+    }
     this.matrix[col][row] = this.nextMove.value;
     this.nextMove.value === 'X' ? this.nextMove.next('O') : this.nextMove.next('X');
     this.moves++;
@@ -37,14 +60,14 @@ export class TicTacToeComponent implements OnInit {
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
-      this.resetGame();
+      this.enableReset = true;
     } else if (this.moves === 9) {
       this._snackBar.open('Es un empate!', 'Ok', {
         duration: 4000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
-      this.resetGame();
+      this.enableReset = true;
     } else {
       return false;
     }
@@ -116,13 +139,5 @@ export class TicTacToeComponent implements OnInit {
       return true;
     }
     return false;
-  }
-  resetGame() {
-    this.moves = 0;
-    this.matrix = [
-      [null, null, null],
-      [null, null, null],
-      [null, null, null]
-    ];
   }
 }
