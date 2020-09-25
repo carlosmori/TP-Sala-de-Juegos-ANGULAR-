@@ -9,7 +9,6 @@ import { ErrorComponent } from '../components/error/error.component';
 import { PrincipalComponent } from '../components/principal/principal.component';
 import { MathAgilityComponent } from '../components/math-agility/math-agility.component';
 import { AdivinaMasListadoComponent } from '../components/adivina-mas-listado/adivina-mas-listado.component';
-import { AgilidadMasListadoComponent } from '../components/agilidad-mas-listado/agilidad-mas-listado.component';
 import { ListadoComponent } from '../components/listado/listado.component';
 import { ListadosComponent } from '../components/listados/listados.component';
 import { JuegosComponent } from '../components/juegos/juegos.component';
@@ -49,7 +48,6 @@ const MiRuteo = [
       { path: '', component: MenuCardComponent },
       { path: 'Adivina', component: GuessTheNumberComponent },
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
-      { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: MathAgilityComponent },
       { path: 'PiedraPapelTijera', component: RockPaperScissorsComponent },
       { path: 'Anagrama', component: AnagramaComponent },
@@ -82,7 +80,6 @@ const routingDevMode = [
       { path: '', component: MenuCardComponent },
       { path: 'Adivina', component: GuessTheNumberComponent },
       { path: 'AdivinaMasListado', component: AdivinaMasListadoComponent },
-      { path: 'AgilidadaMasListado', component: AgilidadMasListadoComponent },
       { path: 'Agilidad', component: MathAgilityComponent },
       { path: 'PiedraPapelTijera', component: RockPaperScissorsComponent },
       { path: 'Anagrama', component: AnagramaComponent },
