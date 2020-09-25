@@ -1,50 +1,69 @@
 import { Component, OnInit } from '@angular/core';
-import { JuegoMemoTest } from '../../clases/juego-memotest';
+import { MemoTestGame } from '../../clases/memo-test-game';
 import { randomInt } from '../../../utils/randomIntGenerator.js';
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-memo-test',
   templateUrl: './memo-test.component.html',
   styleUrls: ['./memo-test.component.scss']
 })
 export class MemoTestComponent {
-  public nuevoJuego: JuegoMemoTest;
+  public newGame: MemoTestGame;
   public displayNumbers = false;
-  mostrarInput = false;
-  tiempo: number;
-  repetidor: any;
-  numerosUsuario;
+  showInput = false;
+  timer: number;
+  interval: any;
+  userSequence;
   disableButton = false;
-  constructor() {
-    this.nuevoJuego = new JuegoMemoTest();
-    this.nuevoJuego.listaDeNumeros = [];
-    this.mostrarInput = false;
-    this.tiempo = 10;
+  enableReset: boolean;
+  constructor(private _snackBar: MatSnackBar) {
+    this.newGame = new MemoTestGame();
+    this.newGame.numberList = [];
+    this.showInput = false;
+    this.timer = 10;
+    this.enableReset = false;
   }
-
-  comenzar() {
-    for (let i = 0; i <= 5; i++) {
-      this.nuevoJuego.listaDeNumeros.push(randomInt(0, 100));
-    }
+  Reset() {
+    this._snackBar.open('Here I would reset the game', 'Ok', {
+      duration: 3000,
+      horizontalPosition: 'right',
+      verticalPosition: 'bottom'
+    });
+  }
+  Begin() {
     this.displayNumbers = true;
-    console.log(this.nuevoJuego.listaDeNumeros);
-    this.repetidor = setInterval(() => {
-      this.tiempo--;
-      if (this.tiempo == 0) {
-        clearInterval(this.repetidor);
-        this.mostrarInput = true;
+    for (let i = 0; i <= 5; i++) {
+      this.newGame.numberList.push(randomInt(0, 100));
+    }
+    console.log(this.newGame.numberList);
+    this.interval = setInterval(() => {
+      this.timer--;
+      if (this.timer == 0) {
+        clearInterval(this.interval);
+        this.showInput = true;
         this.displayNumbers = false;
-        this.tiempo = 5;
+        this.timer = 5;
         this.disableButton = true;
       }
     }, 1000);
   }
 
-  chequearSecuencia(secuenciaNumerosUsuario) {
-    this.nuevoJuego.gano = this.nuevoJuego.chequearSecuencia(secuenciaNumerosUsuario);
-    if (this.nuevoJuego.gano) {
-      alert('Felicidades');
+  CheckSequence(userSequence) {
+    this.newGame.won = this.newGame.checkSequence(userSequence);
+    if (this.newGame.won) {
+      this._snackBar.open('Congratulations, you win!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
     } else {
-      alert('Perdiste');
+      this._snackBar.open(`Sorry that's not the sequence`, 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
     }
+    this.showInput = false;
+    this.enableReset = true;
   }
 }

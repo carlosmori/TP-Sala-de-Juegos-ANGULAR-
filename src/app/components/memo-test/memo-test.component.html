@@ -24,30 +24,29 @@
       </a>
     </div>
   </mat-toolbar>
-  <div class="memoTest-container">
+  <div class="main-container">
     <h1>MemoTest</h1>
-    <h4>Cuando clickees comenzar, se mostraran una serie de
-        <br>Números que deberas memorizar
+    <h4 class="explanation">When you click "Begin" there will be a sequence of numbers-container
+      <br> you will need to memorize! Good luck
     </h4>
-    <button mat-raised-button [disabled]="disableButton" color="primary" (click)="comenzar()">Comenzar</button>
-    <br>
-    <br>
     <div *ngIf="displayNumbers" class="numbers-container">
-    <span *ngFor="let item of nuevoJuego.listaDeNumeros">
+      <span *ngFor="let item of newGame.numberList">
         {{item}}
-    </span>
+      </span>
     </div>
-    <div *ngIf="displayNumbers" class="tiempo">
-        {{tiempo}}
+    <div *ngIf="displayNumbers" class="timer">
+      {{timer}}
     </div>
-
-    <div *ngIf="mostrarInput">
-        <form class="numbers-form">
-            <mat-form-field class="example-full-width">
-              <mat-label>Ingresa secuencia</mat-label>
-              <input matInput [(ngModel)]="numerosUsuario" name="numerosUsuario" type="number">
-            </mat-form-field>
-            <button mat-raised-button  (click)="chequearSecuencia(numerosUsuario)" color="primary">Chequear Secuencia</button>
-          </form>
+    
+    <div *ngIf="showInput">
+      <form class="numbers-form">
+        <mat-form-field class="example-full-width">
+          <mat-label>Type Sequence</mat-label>
+          <input matInput [(ngModel)]="userSequence" name="userSequence" type="number">
+        </mat-form-field>
+        <button mat-raised-button  (click)="CheckSequence(userSequence)" color="primary">Check</button>
+      </form>
     </div>
+    <button mat-raised-button color="primary" (click)="Begin()" *ngIf="!displayNumbers && !showInput && !enableReset">Begin</button>
+    <button mat-raised-button color="accent" (click)="Reset()" *ngIf="enableReset">Reset</button>
 </div>
