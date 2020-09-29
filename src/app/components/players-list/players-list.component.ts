@@ -29,7 +29,7 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './players-list.component.html',
   styleUrls: ['./players-list.component.scss']
 })
-export class PlayersListComponent implements OnInit, AfterViewInit, AfterViewChecked {
+export class PlayersListComponent implements OnInit {
   displayedColumns: string[] = ['photoURL', 'name', 'email', 'sexo', 'cuit'];
   @ViewChild(MatSort) sort: MatSort;
 
