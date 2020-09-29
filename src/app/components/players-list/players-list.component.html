@@ -1,0 +1,74 @@
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a  routerLink="/" >
+        <button mat-menu-item>Menu Principal</button>
+      </a>
+      <a  routerLink="/Juegos" >
+        <button mat-menu-item>Juegos</button>
+      </a>
+      <a  routerLink="/QuienSoy" >
+        <button mat-menu-item>Quien Soy?</button>
+      </a>
+    </mat-menu>
+    <span>Sala de Juegos</span>
+    <span class="example-spacer"></span>
+    <div class="actionButtons">
+      <a routerLink="/Registro">
+        <button mat-button>Registrarse</button>
+      </a>
+      <a  routerLink="/Login">
+        <button mat-button color="accent">Log In</button>
+      </a>
+    </div>
+  </mat-toolbar>
+<div class="main-container">
+    <h1>Player List</h1>
+        <mat-progress-spinner
+            *ngIf="loading" 
+            class="example-margin"
+            [color]="'primary'"
+            [mode]="'indeterminate'"
+            [value]="'50'"
+            [diameter]="'50'">
+            
+        </mat-progress-spinner>
+    <table *ngIf="!loading" mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="photoURL">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Avatar </th>
+            <td mat-cell *matCellDef="let element">
+                <img [src]="element.photoURL" width="100">
+                 <!-- {{element.photoURL}} </td> -->
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+        
+        <!-- Weight Column -->
+        <ng-container matColumnDef="email">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+            <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+        </ng-container>
+        
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="sexo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Sexo </th>
+            <td mat-cell *matCellDef="let element"> {{element.sexo}} </td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="cuit">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header> Cuit </th>
+            <td mat-cell *matCellDef="let element"> {{element.cuit}} </td>
+        </ng-container>
+        
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>

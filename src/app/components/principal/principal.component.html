@@ -1,59 +1,40 @@
 <app-cabecera>  </app-cabecera>
 <div class="principal-container" >
-  <mat-card class="juegos-card" (click)="redirect('Juegos')">
+  <mat-card class="juegos-card" (click)="redirect('Games')">
     <mat-card-header>
-      <mat-card-title>Juegos</mat-card-title>
+      <mat-card-title>Games</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/games.jpg">
     <mat-card-content>
-      <p>El método lúdico es un conjunto de estrategias diseñadas para crear un ambiente de armonía en los estudiantes que están inmersos en el proceso de aprendizaje. Este método busca que los alumnos se apropien de los temas impartidos por los docentes utilizando el juego.</p>
+      <p>Here you will find 7 games to test your dexterity, feeling ready for the challengue?</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Quiero Jugar</button>
+      <button mat-flat-button color="primary">Lets Play</button>
     </mat-card-actions>
   </mat-card>
 
-  <mat-card class="juegos-card" (click)="redirect('Listado')">
+  <mat-card class="juegos-card" (click)="redirect('Results')">
     <mat-card-header>
-      <mat-card-title>Listado de Resultados</mat-card-title>
+      <mat-card-title>Result List</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/results.jpg">
     <mat-card-content>
-      <p>Los listados de los resultados con ordenamiento y busqueda</p>
+      <p>Results list, ordered and with search conditions</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Ver Resultados</button>
+      <button mat-flat-button color="primary">Show me Results</button>
     </mat-card-actions>
   </mat-card>
-
-  <mat-card class="juegos-card" (click)="redirect('Configuracion')">
+  <mat-card class="juegos-card" (click)="redirect('Players')">
     <mat-card-header>
-      <mat-card-title>Configuracion</mat-card-title>
-    </mat-card-header>
-    <img mat-card-image src="./assets/imagenes/nuevas/configuration.jpg">
-    <mat-card-content>
-      <p>Ajustes de la aplicacion y los métodos de autentificación</p>
-    </mat-card-content>
-    <mat-card-actions>
-      <button mat-button>Configuracion</button>
-    </mat-card-actions>
-  </mat-card>
-
-  <mat-card class="juegos-card" (click)="redirect('Jugadores')">
-    <mat-card-header>
-      <mat-card-title>Jugadores</mat-card-title>
+      <mat-card-title>Players</mat-card-title>
     </mat-card-header>
     <img mat-card-image src="./assets/imagenes/nuevas/players.jpg">
     <mat-card-content>
-      <p>Listado de Jugadores</p>
+      <p>List of Players</p>
     </mat-card-content>
     <mat-card-actions>
-      <button mat-button>Ver Jugadores</button>
+      <button mat-flat-button color="primary">See Players</button>
     </mat-card-actions>
   </mat-card>
-  
-          <!-- <a routerLink="/Juegos">
-            <a routerLink="/Listado">
-          <a routerLink="/Jugadores">
- -->
 </div>

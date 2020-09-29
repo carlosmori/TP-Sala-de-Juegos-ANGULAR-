@@ -29,8 +29,8 @@ export class LoginComponent implements OnInit {
   Login(email, password) {
     this.authService.Login(email, password);
   }
-  FillCredentials() {
-    this.email = 'admin@gmail.com';
-    this.password = '123456';
+  FillCredentials(email, password) {
+    this.email = email;
+    this.password = password;
   }
 }

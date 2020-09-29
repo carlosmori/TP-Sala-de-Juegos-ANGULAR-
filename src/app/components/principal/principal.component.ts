@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-principal',
@@ -11,23 +12,22 @@ export class PrincipalComponent implements OnInit {
     isFirstOpen: true,
     isFirstDisabled: false
   };
-  constructor(private router: Router) {}
+  constructor(private router: Router, private authService: AuthService) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.authService.userData);
+  }
 
   redirect(direccion) {
     switch (direccion) {
-      case 'Juegos':
-        this.router.navigate(['/Juegos']);
+      case 'Games':
+        this.router.navigate(['/Games']);
         break;
-      case 'Listado':
-        this.router.navigate(['/Listado']);
+      case 'Results':
+        this.router.navigate(['/ResultList']);
         break;
-      case 'Configuracion':
-        this.router.navigate(['/Configuracion']);
-        break;
-      case 'Jugadores':
-        this.router.navigate(['/Jugadores']);
+      case 'Players':
+        this.router.navigate(['/PlayerList']);
         break;
     }
   }

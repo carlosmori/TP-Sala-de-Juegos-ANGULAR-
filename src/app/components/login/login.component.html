@@ -12,7 +12,14 @@
 <div class="login-container">
   <form class="example-form">
     <h2>Welcome</h2>
-    <button mat-raised-button color="primary" (click)="FillCredentials()">Fill Credentials</button>
+    <h3>Please click to fill credentials</h3>
+    <div class="button-container">
+      <button mat-raised-button color="primary" (click)="FillCredentials('admin@gmail.com','123456')">Admin</button>
+      <button mat-raised-button color="primary" (click)="FillCredentials('usuario1@gmail.com','123456')">Jug 1</button>
+      <button mat-raised-button color="primary" (click)="FillCredentials('usuario2@gmail.com','123456')">Jug 2</button>
+      <button mat-raised-button color="primary" (click)="FillCredentials('usuario3@gmail.com','123456')">Jug 3</button>
+      <button mat-raised-button color="primary" (click)="FillCredentials('usuario4@gmail.com','123456')">Jug 4</button>
+    </div>
 
     <mat-form-field class="example-full-width">
       <mat-label>E-mail</mat-label>
