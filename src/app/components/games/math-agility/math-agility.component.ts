@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { randomInt } from '../../../../utils/randomIntGenerator.js';
+import { GameEnum } from '../../../clases/gameName.enum.js';
 import { MathAgilityGame } from '../../../clases/math-agility-game.js';
 import { AuthService } from '../../../services/auth.service.js';
 import { GamesService } from '../../../services/games.service.js';
@@ -40,9 +41,8 @@ export class MathAgilityComponent implements OnInit {
     const { uid, displayName } = this.authService.GetCurrentUser();
     this.currentUserId = uid;
     this.playerName = displayName;
-    //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'mathAgility' })
+      .getGameIdByName({ name: GameEnum.MATH_AGILITY })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { GameEnum } from '../../../clases/gameName.enum';
 import { JuegoAdivina } from '../../../clases/juego-adivina';
 import { AuthService } from '../../../services/auth.service';
 import { GamesService } from '../../../services/games.service';
@@ -36,9 +37,8 @@ export class GuessTheNumberComponent implements OnInit {
     const { uid, displayName } = this.authService.GetCurrentUser();
     this.currentUserId = uid;
     this.playerName = displayName;
-    //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'guessTheNumber' })
+      .getGameIdByName({ name: GameEnum.GUESS_THE_NUMBER })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

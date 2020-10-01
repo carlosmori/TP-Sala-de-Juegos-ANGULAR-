@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 import { GamesService } from '../../../services/games.service';
 import { Router } from '@angular/router';
+import { GameEnum } from '../../../clases/gameName.enum';
 @Component({
   selector: 'app-rock-paper-scissors',
   templateUrl: './rock-paper-scissors.component.html',
@@ -36,7 +37,7 @@ export class RockPaperScissorsComponent implements OnInit {
     this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'rockPaperScissors' })
+      .getGameIdByName({ name: GameEnum.ROCK_PAPER_SCISSORS })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

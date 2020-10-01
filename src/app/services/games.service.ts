@@ -22,8 +22,8 @@ export class GamesService {
     const gameRef = this.firestore.collection<any>('games', (ref) => ref.where('name', '==', name));
     return gameRef.valueChanges({ idField: 'gameId' });
   }
-  // getGames() {
-  //   const gameRef = this.firestore.collection<any>('games').doc('Key Press');
-  //   return gameRef.valueChanges();
-  // }
+  getGames() {
+    const gameRef = this.firestore.collection<any>('games');
+    return gameRef.valueChanges({ idField: 'gameId' });
+  }
 }

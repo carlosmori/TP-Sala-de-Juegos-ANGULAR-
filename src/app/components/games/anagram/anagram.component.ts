@@ -6,6 +6,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 import { GamesService } from '../../../services/games.service';
 import { Router } from '@angular/router';
+import { GameEnum } from '../../../clases/gameName.enum';
 @Component({
   selector: 'app-anagram',
   templateUrl: './anagram.component.html',
@@ -44,9 +45,8 @@ export class AnagramComponent implements OnInit {
     const { uid, displayName } = this.authService.GetCurrentUser();
     this.currentUserId = uid;
     this.playerName = displayName;
-    //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'anagram' })
+      .getGameIdByName({ name: GameEnum.ANAGRAM })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

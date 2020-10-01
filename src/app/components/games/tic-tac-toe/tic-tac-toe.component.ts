@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { GameEnum } from '../../../clases/gameName.enum';
 import { AuthService } from '../../../services/auth.service';
 import { GamesService } from '../../../services/games.service';
 
@@ -42,7 +43,7 @@ export class TicTacToeComponent implements OnInit {
     this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'keyPress' })
+      .getGameIdByName({ name: GameEnum.TIC_TAC_TOE })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

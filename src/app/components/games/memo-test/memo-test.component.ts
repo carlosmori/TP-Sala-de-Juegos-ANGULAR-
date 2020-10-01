@@ -5,6 +5,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AuthService } from '../../../services/auth.service';
 import { GamesService } from '../../../services/games.service';
 import { Router } from '@angular/router';
+import { GameEnum } from '../../../clases/gameName.enum';
 @Component({
   selector: 'app-memo-test',
   templateUrl: './memo-test.component.html',
@@ -38,9 +39,8 @@ export class MemoTestComponent implements OnInit {
     const { uid, displayName } = this.authService.GetCurrentUser();
     this.currentUserId = uid;
     this.playerName = displayName;
-    //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'memoTest' })
+      .getGameIdByName({ name: GameEnum.MEMO_TEST })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

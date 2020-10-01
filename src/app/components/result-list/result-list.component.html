@@ -1,1 +1,29 @@
-<p>result-list works!</p>
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <a  routerLink="/" >
+        <button mat-menu-item>Menu Principal</button>
+      </a>
+      <a  routerLink="/Juegos" >
+        <button mat-menu-item>Juegos</button>
+      </a>
+      <a  routerLink="/QuienSoy" >
+        <button mat-menu-item>Quien Soy?</button>
+      </a>
+    </mat-menu>
+    <span>Sala de Juegos</span>
+    <span class="example-spacer"></span>
+    <div class="actionButtons">
+      <div>
+        <button mat-button color="accent" (click)=Logout()>Log Out</button>
+      </div>
+    </div>
+  </mat-toolbar>
+  <div class="main-container">
+    <h1>Result List</h1>
+    <div class="button-container">
+        <button *ngFor="let game of gamesList" mat-raised-button color="primary" (click)=populateTable(game)>{{game.name | gameName}}</button>
+    </div>
+</div>

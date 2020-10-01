@@ -6,6 +6,7 @@ import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { UserService } from '../../../services/user.service';
 import { AuthService } from '../../../services/auth.service';
+import { GameEnum } from '../../../clases/gameName.enum';
 
 @Component({
   selector: 'app-key-press',
@@ -44,9 +45,8 @@ export class KeyPressComponent implements OnInit {
     const { uid, displayName } = this.authService.GetCurrentUser();
     this.currentUserId = uid;
     this.playerName = displayName;
-    //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'keyPress' })
+      .getGameIdByName({ name: GameEnum.KEY_PRESS })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);

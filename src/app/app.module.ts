@@ -34,6 +34,7 @@ import { AuthService } from './services/auth.service';
 import { KeyPressComponent } from './components/games/key-press/key-press.component';
 import { ResultListComponent } from './components/result-list/result-list.component';
 import { PlayersListComponent } from './components/players-list/players-list.component';
+import { GameNamePipe } from './pipes/game-name.pipe';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { PlayersListComponent } from './components/players-list/players-list.com
     TicTacToeComponent,
     KeyPressComponent,
     ResultListComponent,
-    PlayersListComponent
+    PlayersListComponent,
+    GameNamePipe
   ],
   imports: [
     BrowserModule,
