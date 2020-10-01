@@ -1,20 +1,8 @@
-<mat-toolbar>
-  <a routerLink="/">
-    <span>Sala de Juegos</span>
-  </a>
-  <span class="example-spacer"></span>
-  <div class="actionButtons">
-    <a routerLink="/Registro">
-      <button mat-button>Registrarse</button>
-    </a>
-  </div>
-</mat-toolbar>
 <div class="login-container">
   <form class="example-form">
     <h2>Welcome</h2>
     <h3>Please click to fill credentials</h3>
     <div class="button-container">
-      <button mat-raised-button color="primary" (click)="FillCredentials('admin@gmail.com','123456')">Admin</button>
       <button mat-raised-button color="primary" (click)="FillCredentials('usuario1@gmail.com','123456')">Jug 1</button>
       <button mat-raised-button color="primary" (click)="FillCredentials('usuario2@gmail.com','123456')">Jug 2</button>
       <button mat-raised-button color="primary" (click)="FillCredentials('usuario3@gmail.com','123456')">Jug 3</button>
@@ -30,6 +18,5 @@
       <input matInput type="password" name="password" [(ngModel)]="password">
     </mat-form-field>
     <button mat-raised-button color="accent" (click)="Login(email,password)">Loguearse</button>
-    <!-- <mat-checkbox class="example-margin" [(ngModel)]="checked">Recuerdame</mat-checkbox> -->
   </form>
 </div>

@@ -28,9 +28,11 @@ const MiRuteo = [
   { path: 'QuienSoy', component: QuienSoyComponent, canActivate: [AuthGuard] },
   { path: 'Registro', component: RegistroComponent, canActivate: [AuthGuard] },
   { path: 'Principal', component: PrincipalComponent, canActivate: [AuthGuard] },
+  { path: 'ResultList', component: ResultListComponent, canActivate: [AuthGuard] },
+  { path: 'PlayerList', component: PlayersListComponent, canActivate: [AuthGuard] },
 
   {
-    path: 'Juegos',
+    path: 'Games',
     component: JuegosComponent,
     canActivate: [AuthGuard],
     children: [
@@ -76,7 +78,7 @@ const routingDevMode = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routingDevMode)],
+  imports: [RouterModule.forRoot(MiRuteo)],
   exports: [RouterModule]
 })
 export class RuteandoModule {}

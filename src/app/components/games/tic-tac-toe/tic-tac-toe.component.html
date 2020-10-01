@@ -4,10 +4,10 @@
     </button>
     <mat-menu #menu="matMenu">
         <a  routerLink="/" >
-        <button mat-menu-item>Menu Principal</button>
+        <button mat-menu-item>Menu </button>
         </a>
-        <a  routerLink="/Juegos" >
-        <button mat-menu-item>Juegos</button>
+        <a  routerLink="/Games" >
+        <button mat-menu-item>Games</button>
         </a>
         <a  routerLink="/QuienSoy" >
         <button mat-menu-item>Quien Soy?</button>
@@ -24,11 +24,11 @@
 <div class="main-container">
     <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
     <h1>Tic Tac Toe</h1>
-    <div class="main-square" *ngIf="gameStarted && !enableReset">
+    <div *ngIf="currentStreak !== 0">Your current Streak is : {{currentStreak}}</div>
+    <div class="main-square" *ngIf="gameStarted">
         <div *ngFor="let col of matrix; index as c" class="fila">
             <div *ngFor="let row of col; index as r" class="celda" (click)="MarkSpot(c,r)" >{{row}}</div>
         </div> 
     </div>
-    <button *ngIf="!gameStarted && !enableReset" (click)="Begin()" mat-raised-button color="primary">Begin</button>
-    <button *ngIf="enableReset" (click)="Reset()" mat-raised-button color="accent">Reset</button>
+    <button *ngIf="!gameStarted" (click)="Begin()" mat-raised-button color="primary">Begin</button>
 </div>

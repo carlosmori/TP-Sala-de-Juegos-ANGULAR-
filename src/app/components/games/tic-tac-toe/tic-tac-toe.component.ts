@@ -6,7 +6,7 @@ import { BehaviorSubject } from 'rxjs';
 import { GameEnum } from '../../../clases/gameName.enum';
 import { AuthService } from '../../../services/auth.service';
 import { GamesService } from '../../../services/games.service';
-
+import { randomInt } from '../../../../utils/randomIntGenerator.js';
 @Component({
   selector: 'app-tic-tac-toe',
   templateUrl: './tic-tac-toe.component.html',
@@ -14,29 +14,25 @@ import { GamesService } from '../../../services/games.service';
 })
 export class TicTacToeComponent implements OnInit {
   public nextMove: BehaviorSubject<string>;
-  moves = 0;
+  moves;
   gameStarted: boolean;
-  enableReset: boolean;
   currentUserId: any;
   playerName: any;
   gameId: any;
   resultId: any;
   score: any;
+  currentStreak: number;
+  matrix;
+  gameStillOn: any;
   constructor(
     private _snackBar: MatSnackBar,
     private gameService: GamesService,
     private router: Router,
     private authService: AuthService
   ) {
-    this.nextMove = new BehaviorSubject('X');
-    this.gameStarted = false;
-    this.enableReset = false;
+    this.currentStreak = 0;
+    this.ResetGame();
   }
-  matrix = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-  ];
   ngOnInit(): void {
     const { uid, displayName } = this.authService.GetCurrentUser();
     this.currentUserId = uid;
@@ -82,18 +78,13 @@ export class TicTacToeComponent implements OnInit {
       horizontalPosition: 'right',
       verticalPosition: 'bottom'
     });
-    // this.moves = 0;
-    // this.matrix = [
-    //   [null, null, null],
-    //   [null, null, null],
-    //   [null, null, null]
-    // ];
   }
 
   Begin() {
     this.gameStarted = true;
   }
   MarkSpot(col, row) {
+    let noWinners = false;
     if (this.matrix[col][row]) {
       return;
     }
@@ -101,30 +92,69 @@ export class TicTacToeComponent implements OnInit {
     this.nextMove.value === 'X' ? this.nextMove.next('O') : this.nextMove.next('X');
     this.moves++;
     if (this.moves >= 5) {
-      this.checkForWinners();
+      noWinners = this.checkForWinners();
+    }
+    if (this.gameStillOn && this.nextMove.value == 'O' && !noWinners) {
+      this.MachineMove();
     }
   }
-
+  MachineMove() {
+    const col = randomInt(0, 3);
+    const row = randomInt(0, 3);
+    if (this.matrix[col][row]) {
+      this.MachineMove();
+    } else {
+      this.matrix[col][row] = this.nextMove.value;
+      this.nextMove.value === 'X' ? this.nextMove.next('O') : this.nextMove.next('X');
+      this.moves++;
+      if (this.moves >= 5 && this.gameStillOn) {
+        this.checkForWinners();
+      }
+    }
+  }
   checkForWinners() {
     if (this.checkRow() || this.checkCol() || this.checkDiagonals()) {
-      this._snackBar.open('TaTeTi, Ganaste!', 'Ok', {
-        duration: 4000,
-        horizontalPosition: 'right',
-        verticalPosition: 'bottom'
-      });
-      this.enableReset = true;
+      if (this.nextMove.value == 'O') {
+        this._snackBar.open('TaTeTi, Ganaste!', 'Ok', {
+          duration: 4000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom'
+        });
+        this.currentStreak++;
+        this.checkResult();
+        this.gameStillOn = false;
+      } else {
+        this._snackBar.open('Perdiste, suerte la proxima!', 'Ok', {
+          duration: 4000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom'
+        });
+        this.currentStreak = 0;
+        this.gameStillOn = false;
+      }
+      this.ResetGame();
     } else if (this.moves === 9) {
       this._snackBar.open('Es un empate!', 'Ok', {
         duration: 4000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
-      this.enableReset = true;
+      this.gameStillOn = false;
+      this.ResetGame();
     } else {
       return false;
     }
   }
-
+  checkResult() {
+    if (this.currentStreak > this.score) {
+      this.gameService.updateScoreByUserId({ resultId: this.resultId, result: this.currentStreak });
+      this._snackBar.open('Congrats you beat your own mark!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+    }
+  }
   checkCol() {
     for (let index = 0; index < this.matrix.length; index++) {
       const col = this.matrix[index];
@@ -191,6 +221,18 @@ export class TicTacToeComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  ResetGame() {
+    this.gameStillOn = true;
+    this.nextMove = new BehaviorSubject('X');
+    this.gameStarted = false;
+    this.moves = 0;
+    this.matrix = [
+      [null, null, null],
+      [null, null, null],
+      [null, null, null]
+    ];
   }
   Logout() {
     this.authService.Logout();
