@@ -3,6 +3,7 @@ import { Juego } from '../../../clases/juego';
 import { AnagramGame } from '../../../clases/anagram-game';
 import { randomInt } from '../../../../utils/randomIntGenerator.js';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-anagram',
   templateUrl: './anagram.component.html',
@@ -22,7 +23,7 @@ export class AnagramComponent implements OnInit {
     return array.sort(() => Math.random() - 0.5);
   }
 
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
     this.unorderedWord = null;
     this.userWord = '';
     this.attempts = 0;
@@ -75,5 +76,8 @@ export class AnagramComponent implements OnInit {
       horizontalPosition: 'right',
       verticalPosition: 'bottom'
     });
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }

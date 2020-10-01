@@ -5,6 +5,7 @@ import { GamesService } from '../../../services/games.service';
 import { switchMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { UserService } from '../../../services/user.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-key-press',
@@ -31,7 +32,8 @@ export class KeyPressComponent implements OnInit {
     private _snackBar: MatSnackBar,
     private gameService: GamesService,
     private router: Router,
-    private userService: UserService
+    private userService: UserService,
+    private authService: AuthService
   ) {
     this.timer = 2;
     this.keyPressCount = 0;
@@ -143,5 +145,8 @@ export class KeyPressComponent implements OnInit {
       horizontalPosition: 'right',
       verticalPosition: 'bottom'
     });
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }

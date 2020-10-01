@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
 import { randomInt } from '../../../../utils/randomIntGenerator.js';
 import { MathAgilityGame } from '../../../clases/math-agility-game.js';
+import { AuthService } from '../../../services/auth.service.js';
 @Component({
   selector: 'app-math-agility',
   templateUrl: './math-agility.component.html',
@@ -18,7 +19,7 @@ export class MathAgilityComponent implements OnInit {
   interval: any;
   gameStarted: boolean;
   enableReset: boolean;
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
     this.displayVerify = false;
     this.gameStarted = false;
     this.enableReset = false;
@@ -80,5 +81,8 @@ export class MathAgilityComponent implements OnInit {
         verticalPosition: 'bottom'
       });
     }
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }

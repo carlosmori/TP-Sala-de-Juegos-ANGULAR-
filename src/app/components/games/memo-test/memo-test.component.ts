@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MemoTestGame } from '../../../clases/memo-test-game';
 import { randomInt } from '../../../../utils/randomIntGenerator.js';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-memo-test',
   templateUrl: './memo-test.component.html',
@@ -16,7 +17,7 @@ export class MemoTestComponent {
   userSequence;
   disableButton = false;
   enableReset: boolean;
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
     this.newGame = new MemoTestGame();
     this.newGame.numberList = [];
     this.showInput = false;
@@ -65,5 +66,8 @@ export class MemoTestComponent {
     }
     this.showInput = false;
     this.enableReset = true;
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }

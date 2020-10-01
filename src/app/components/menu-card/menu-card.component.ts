@@ -42,7 +42,7 @@ export class MenuCardComponent implements OnInit {
         break;
     }
   }
-  logout() {
-    this.authService.logout();
+  Logout() {
+    this.authService.Logout();
   }
 }

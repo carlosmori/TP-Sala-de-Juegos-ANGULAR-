@@ -2,6 +2,7 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { BehaviorSubject } from 'rxjs';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -13,7 +14,7 @@ export class TicTacToeComponent implements OnInit {
   moves = 0;
   gameStarted: boolean;
   enableReset: boolean;
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
     this.nextMove = new BehaviorSubject('X');
     this.gameStarted = false;
     this.enableReset = false;
@@ -139,5 +140,8 @@ export class TicTacToeComponent implements OnInit {
       return true;
     }
     return false;
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }

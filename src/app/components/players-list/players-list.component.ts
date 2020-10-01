@@ -3,6 +3,7 @@ import { UserService } from '../../services/user.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { finalize } from 'rxjs/operators';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-players-list',
@@ -17,7 +18,7 @@ export class PlayersListComponent implements OnInit {
   userList = [];
   dataSource: MatTableDataSource<any>;
   loading: boolean;
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private authService: AuthService) {
     this.loading = true;
   }
 
@@ -27,5 +28,8 @@ export class PlayersListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(users);
       this.loading = false;
     });
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }

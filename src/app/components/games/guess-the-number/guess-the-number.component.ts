@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { JuegoAdivina } from '../../../clases/juego-adivina';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-guess-the-number',
@@ -14,12 +15,14 @@ export class GuessTheNumberComponent implements OnInit {
   numberGenerated: boolean;
   enableReset: boolean;
 
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
     this.newGame = new JuegoAdivina();
     this.displayVerify = false;
     this.numberGenerated = false;
     console.info('numero Secreto:', this.newGame.secretNumber);
   }
+  ngOnInit() {}
+
   Begin() {
     this.numberGenerated = true;
     this.newGame.generateSecretNumber();
@@ -98,5 +101,7 @@ export class GuessTheNumberComponent implements OnInit {
       verticalPosition: 'bottom'
     });
   }
-  ngOnInit() {}
+  Logout() {
+    this.authService.Logout();
+  }
 }

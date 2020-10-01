@@ -11,11 +11,8 @@
   <span>Principal</span>
   <span class="example-spacer"></span>
   <div class="actionButtons">
-    <a routerLink="/Registro">
-      <button mat-button>Registrarse</button>
-    </a>
-    <a  routerLink="/Login">
-      <button mat-button color="accent">Log In</button>
-    </a>
+    <div>
+      <button mat-button color="accent" (click)=Logout()>Log Out</button>
+    </div>
   </div>
 </mat-toolbar>

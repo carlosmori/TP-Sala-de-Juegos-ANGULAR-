@@ -70,7 +70,8 @@ export class AuthService {
       });
   }
   Logout() {
-    this.isLoggedIn = false;
+    localStorage.removeItem('user');
+    this.router.navigate(['/Login']);
   }
   // Sign in with email/password
   SignIn(email, password) {

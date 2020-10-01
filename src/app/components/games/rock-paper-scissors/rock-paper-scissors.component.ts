@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { GameRockPaperScissors } from '../../../clases/game-rock-paper-scissors';
 import { randomInt } from '../../../../utils/randomIntGenerator.js';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AuthService } from '../../../services/auth.service';
 @Component({
   selector: 'app-rock-paper-scissors',
   templateUrl: './rock-paper-scissors.component.html',
@@ -12,7 +13,7 @@ export class RockPaperScissorsComponent implements OnInit {
   enableReset: boolean;
   gameStarted: boolean;
 
-  constructor(private _snackBar: MatSnackBar) {
+  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
     this.newGame = new GameRockPaperScissors();
     this.enableReset = false;
     this.gameStarted = false;
@@ -76,5 +77,8 @@ export class RockPaperScissorsComponent implements OnInit {
     if (this.newGame.machineWon || this.newGame.playerwon) {
       this.enableReset = true;
     }
+  }
+  Logout() {
+    this.authService.Logout();
   }
 }
