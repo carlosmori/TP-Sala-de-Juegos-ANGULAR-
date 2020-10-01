@@ -20,23 +20,20 @@ export class MathAgilityComponent implements OnInit {
   time: number;
   interval: any;
   gameStarted: boolean;
-  enableReset: boolean;
   currentUserId: any;
   playerName: any;
   gameId: any;
   resultId: any;
   score: any;
+  currentStreak: number;
   constructor(
     private _snackBar: MatSnackBar,
     private gameService: GamesService,
     private router: Router,
     private authService: AuthService
   ) {
-    this.displayVerify = false;
-    this.gameStarted = false;
-    this.enableReset = false;
-    this.time = 5;
-    this.newGame = new MathAgilityGame();
+    this.currentStreak = 0;
+    this.ResetGame();
   }
 
   ngOnInit() {
@@ -45,7 +42,7 @@ export class MathAgilityComponent implements OnInit {
     this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'keyPress' })
+      .getGameIdByName({ name: 'mathAgility' })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);
@@ -100,30 +97,27 @@ export class MathAgilityComponent implements OnInit {
       this.time--;
       if (this.time == 0) {
         clearInterval(this.interval);
-        this.Verify();
-        this.displayVerify = false;
-        this.time = 5;
+        this.currentStreak = 0;
         this._snackBar.open('Sorry you lost, try again!', 'Ok', {
           duration: 3000,
           horizontalPosition: 'right',
           verticalPosition: 'bottom'
         });
-        this.gameStarted = false;
-        this.enableReset = true;
+        this.ResetGame();
       }
     }, 1000);
   }
   Verify() {
     if (this.newGame.inputNumber == this.newGame.result) {
-      this._snackBar.open('You are the Winner!!!!', 'Ok', {
+      this.currentStreak++;
+      this._snackBar.open('You won, congratulations!', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
       clearInterval(this.interval);
-      this.displayVerify = false;
-      this.gameStarted = false;
-      this.enableReset = true;
+      this.checkResult();
+      this.ResetGame();
     } else {
       this._snackBar.open('Wrong answer, keep trying!', 'Ok', {
         duration: 3000,
@@ -131,6 +125,22 @@ export class MathAgilityComponent implements OnInit {
         verticalPosition: 'bottom'
       });
     }
+  }
+  checkResult() {
+    if (this.currentStreak > this.score) {
+      this.gameService.updateScoreByUserId({ resultId: this.resultId, result: this.currentStreak });
+      this._snackBar.open('Congrats you beat your own mark!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+    }
+  }
+  ResetGame() {
+    this.displayVerify = false;
+    this.gameStarted = false;
+    this.time = 5;
+    this.newGame = new MathAgilityGame();
   }
   Logout() {
     this.authService.Logout();

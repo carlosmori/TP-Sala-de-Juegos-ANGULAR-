@@ -25,6 +25,10 @@
 <div class="main-container">
   <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
   <h1>Math Agility</h1>
+  <div *ngIf="currentStreak !== 0">Your current Streak is : {{currentStreak}}</div>
+  <h3>You have only 5 seconds to solve a math operation</h3>
+  <span class="hint">hint: the numbers to operate are between 0 - 10</span>
+  
   <div class="game-container" *ngIf="gameStarted">  
     <form class="example-form">
       <mat-form-field class="example-full-width">
@@ -48,6 +52,5 @@
         <button (click)="Begin()" mat-raised-button color="accent" *ngIf="!displayVerify" >Nuevo</button>
     </form>
   </div>
-  <button *ngIf="!gameStarted && !enableReset" (click)="Begin()" mat-raised-button color="primary">Begin</button>
-  <button *ngIf="!gameStarted && enableReset" (click)="Reset()" mat-raised-button color="accent">Reset</button>
+  <button *ngIf="!gameStarted" (click)="Begin()" mat-raised-button color="primary">Begin</button>
 </div>
