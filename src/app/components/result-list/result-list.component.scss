@@ -18,6 +18,7 @@ mat-toolbar{
         color: #673ab6;
         margin-top: 1rem;
         table{
+            margin-top: 2rem;
             width: 90%;
             text-align: center;
             th{
@@ -29,4 +30,5 @@ mat-toolbar{
         display: flex;
         justify-content: space-evenly;
       }
+      
   }

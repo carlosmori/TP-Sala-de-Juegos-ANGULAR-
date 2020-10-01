@@ -15,6 +15,12 @@ export class UserService {
   listUsers() {
     return this.authService.userData;
   }
+  getUserById({ userId }) {
+    const gameRef = this.firestore.collection<any>('users', (ref) =>
+      ref.where('uid', '==', userId)
+    );
+    return gameRef.valueChanges();
+  }
   public saveUser() {
     return;
     // const { uid, displayName, photoURL, email } = this.authService.userData;
