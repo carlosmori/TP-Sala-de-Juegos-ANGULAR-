@@ -22,8 +22,8 @@
     </div>
   </mat-toolbar>
 <div class="main-container">
-    <div class="score" *ngIf="score != 0">Highest Score : {{score}}</div>
-    <h1>Rock, Paper & Scissors</h1>
+  <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
+  <h1>Rock, Paper & Scissors</h1>
     <div class="game-container" *ngIf="gameStarted && !enableReset">
       <div class="results-container">
           <div class="rivals">

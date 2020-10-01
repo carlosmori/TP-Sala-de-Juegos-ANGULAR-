@@ -1,8 +1,10 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Component, OnInit } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from '../../../services/auth.service';
+import { GamesService } from '../../../services/games.service';
 
 @Component({
   selector: 'app-tic-tac-toe',
@@ -14,7 +16,17 @@ export class TicTacToeComponent implements OnInit {
   moves = 0;
   gameStarted: boolean;
   enableReset: boolean;
-  constructor(private _snackBar: MatSnackBar, private authService: AuthService) {
+  currentUserId: any;
+  playerName: any;
+  gameId: any;
+  resultId: any;
+  score: any;
+  constructor(
+    private _snackBar: MatSnackBar,
+    private gameService: GamesService,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.nextMove = new BehaviorSubject('X');
     this.gameStarted = false;
     this.enableReset = false;
@@ -24,7 +36,45 @@ export class TicTacToeComponent implements OnInit {
     [null, null, null],
     [null, null, null]
   ];
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const { uid, displayName } = this.authService.GetCurrentUser();
+    this.currentUserId = uid;
+    this.playerName = displayName;
+    //@todo move name to GameEnum
+    this.gameService
+      .getGameIdByName({ name: 'keyPress' })
+      .switchMap((game) => {
+        if (game.length === 0) {
+          this.router.navigate(['/Games']);
+        }
+        const { gameId } = game[0];
+
+        return this.gameService.getGameResultsById({
+          gameId,
+          userId: this.currentUserId
+        });
+      })
+      .subscribe(
+        (gameResult) => {
+          console.log(gameResult);
+          //@todo check how to flatten the response so I dont need to [0] the response
+          const { gameId, resultId, userId, result } = gameResult[0];
+          this.gameId = gameId;
+          this.resultId = resultId;
+          this.currentUserId = userId;
+          this.score = result;
+        },
+        (error) => {
+          this._snackBar.open(`There was an error loading the game Id: ${error}`, 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'center',
+            verticalPosition: 'bottom'
+          });
+          this.router.navigate(['/Games']);
+          console.log('error');
+        }
+      );
+  }
   Reset() {
     this._snackBar.open('Here I would Reset', 'Ok', {
       duration: 4000,

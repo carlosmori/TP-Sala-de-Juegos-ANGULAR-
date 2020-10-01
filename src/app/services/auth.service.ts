@@ -35,6 +35,9 @@ export class AuthService {
     //   }
     // });
   }
+  GetCurrentUser() {
+    return JSON.parse(localStorage.getItem('user'));
+  }
   Login(email, password) {
     return this.afAuth
       .signInWithEmailAndPassword(email, password)

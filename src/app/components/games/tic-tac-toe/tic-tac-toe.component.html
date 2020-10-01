@@ -22,7 +22,7 @@
     </div>
 </mat-toolbar>
 <div class="main-container">
-    <div class="score" *ngIf="score != 0">Highest Score : {{score}}</div>
+    <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
     <h1>Tic Tac Toe</h1>
     <div class="main-square" *ngIf="gameStarted && !enableReset">
         <div *ngFor="let col of matrix; index as c" class="fila">

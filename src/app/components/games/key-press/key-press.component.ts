@@ -23,16 +23,15 @@ export class KeyPressComponent implements OnInit {
   timer2: number;
   gameId: any;
   score: number;
-  userId: any;
   resultId: any;
   currentUserId: any;
+  playerName: any;
 
   constructor(
     public ngZone: NgZone,
     private _snackBar: MatSnackBar,
     private gameService: GamesService,
     private router: Router,
-    private userService: UserService,
     private authService: AuthService
   ) {
     this.timer = 2;
@@ -42,7 +41,9 @@ export class KeyPressComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.userService.currentUser);
+    const { uid, displayName } = this.authService.GetCurrentUser();
+    this.currentUserId = uid;
+    this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
       .getGameIdByName({ name: 'keyPress' })
@@ -54,7 +55,7 @@ export class KeyPressComponent implements OnInit {
 
         return this.gameService.getGameResultsById({
           gameId,
-          userId: 'oBX7liSdgQbqmEgmkVWa3isgLSg2'
+          userId: this.currentUserId
         });
       })
       .subscribe(
