@@ -26,9 +26,8 @@
 </mat-toolbar>
 
 <div class="main-container">
-  <h1>
-    Math Agility
-  </h1>
+  <div class="score" *ngIf="score != 0">Highest Score : {{score}}</div>
+  <h1>Math Agility</h1>
   <div class="game-container" *ngIf="gameStarted">  
     <form class="example-form">
       <mat-form-field class="example-full-width">

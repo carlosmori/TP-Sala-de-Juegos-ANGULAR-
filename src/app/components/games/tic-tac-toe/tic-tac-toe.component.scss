@@ -17,6 +17,12 @@ mat-toolbar{
     align-items: center;
     flex-direction: column;
     color: #673ab6;
+    .score{
+        position: absolute;
+        top: 10%;
+        right: 5%;
+        font-size: 1.5rem;
+    }
     .main-square{
         margin-top: 10%;
         width: 50%;

@@ -6,6 +6,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class UserService {
+  currentUser: any;
   usersCollection: any;
   constructor(private firestore: AngularFirestore, private authService: AuthService) {
     this.usersCollection = this.firestore.collection<any>('users');

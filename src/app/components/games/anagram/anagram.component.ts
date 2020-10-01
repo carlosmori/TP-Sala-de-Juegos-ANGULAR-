@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Juego } from '../../clases/juego';
-import { AnagramGame } from '../../clases/anagram-game';
-import { randomInt } from '../../../utils/randomIntGenerator.js';
+import { Juego } from '../../../clases/juego';
+import { AnagramGame } from '../../../clases/anagram-game';
+import { randomInt } from '../../../../utils/randomIntGenerator.js';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
-  selector: 'app-anagramam',
-  templateUrl: './anagramam.component.html',
-  styleUrls: ['./anagramam.component.scss']
+  selector: 'app-anagram',
+  templateUrl: './anagram.component.html',
+  styleUrls: ['./anagram.component.scss']
 })
-export class AnagramamComponent implements OnInit {
+export class AnagramComponent implements OnInit {
   newGame: AnagramGame;
   unorderedWord: any;
   userWord: string;
@@ -16,6 +16,7 @@ export class AnagramamComponent implements OnInit {
   disableButton: boolean;
   enableReset: boolean;
   gameStarted: boolean;
+  score: number;
 
   shuffle(array) {
     return array.sort(() => Math.random() - 0.5);

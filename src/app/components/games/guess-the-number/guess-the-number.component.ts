@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { JuegoAdivina } from '../../clases/juego-adivina';
+import { JuegoAdivina } from '../../../clases/juego-adivina';
 
 @Component({
   selector: 'app-guess-the-number',

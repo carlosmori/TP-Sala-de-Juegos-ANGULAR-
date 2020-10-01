@@ -48,12 +48,13 @@ export class AuthService {
               photoURL,
               email
             };
-          });
-          this.isLoggedIn = true;
-          this._snackBar.open('Welcome', 'Ok', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom'
+            this.isLoggedIn = true;
+            localStorage.setItem('user', JSON.stringify(this.userData));
+            this._snackBar.open('Welcome', 'Ok', {
+              duration: 3000,
+              horizontalPosition: 'right',
+              verticalPosition: 'bottom'
+            });
           });
           this.router.navigate(['/Principal']);
         });

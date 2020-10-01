@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MemoTestGame } from '../../clases/memo-test-game';
-import { randomInt } from '../../../utils/randomIntGenerator.js';
+import { MemoTestGame } from '../../../clases/memo-test-game';
+import { randomInt } from '../../../../utils/randomIntGenerator.js';
 import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-memo-test',

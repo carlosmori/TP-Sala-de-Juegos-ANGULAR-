@@ -25,6 +25,7 @@
   </div>
 </mat-toolbar>
 <div class="main-container">
+  <div class="score" *ngIf="score != 0">Highest Score : {{score}}</div>
   <h1>Guess the messy word!</h1>
   <div class="game-container" *ngIf="!enableReset && gameStarted">
     <h2 class="palabra-desordenada">

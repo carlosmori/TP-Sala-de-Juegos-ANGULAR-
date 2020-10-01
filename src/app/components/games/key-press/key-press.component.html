@@ -24,11 +24,10 @@
         </a>
     </div>
 </mat-toolbar>
-
 <div class="main-container">
+    <div class="score" *ngIf="score != 0">Highest Score : {{score}}</div>
     <h1>Welcome KeyPress</h1>
     <h2>The Goal is to press the  'C'  key as many times as you can!</h2>
-    
     <div *ngIf="!displayMessage">
         <div class="timer">
         {{timer}}

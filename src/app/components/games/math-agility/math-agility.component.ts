@@ -3,8 +3,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { Subscription } from 'rxjs';
 import { TimerObservable } from 'rxjs/observable/TimerObservable';
-import { randomInt } from '../../../utils/randomIntGenerator.js';
-import { MathAgilityGame } from '../../clases/math-agility-game.js';
+import { randomInt } from '../../../../utils/randomIntGenerator.js';
+import { MathAgilityGame } from '../../../clases/math-agility-game.js';
 @Component({
   selector: 'app-math-agility',
   templateUrl: './math-agility.component.html',

@@ -26,6 +26,7 @@
 </mat-toolbar>
 
 <div class="main-container">
+  <div class="score" *ngIf="score != 0">Highest Score : {{score}}</div>
   <h1>Guess the number!</h1>
   <span class="hint">hint: it's in the range of 0 - 100</span>
   <form class="example-form">
