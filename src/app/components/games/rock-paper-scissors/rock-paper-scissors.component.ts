@@ -12,13 +12,13 @@ import { Router } from '@angular/router';
 })
 export class RockPaperScissorsComponent implements OnInit {
   public newGame: GameRockPaperScissors;
-  enableReset: boolean;
   gameStarted: boolean;
   currentUserId: any;
   playerName: any;
   gameId: any;
   resultId: any;
   score: any;
+  currentStreak: number;
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -26,9 +26,8 @@ export class RockPaperScissorsComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-    this.newGame = new GameRockPaperScissors();
-    this.enableReset = false;
-    this.gameStarted = false;
+    this.currentStreak = 0;
+    this.ResetGame();
   }
 
   ngOnInit(): void {
@@ -37,7 +36,7 @@ export class RockPaperScissorsComponent implements OnInit {
     this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'keyPress' })
+      .getGameIdByName({ name: 'rockPaperScissors' })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);
@@ -51,7 +50,6 @@ export class RockPaperScissorsComponent implements OnInit {
       })
       .subscribe(
         (gameResult) => {
-          console.log(gameResult);
           //@todo check how to flatten the response so I dont need to [0] the response
           const { gameId, resultId, userId, result } = gameResult[0];
           this.gameId = gameId;
@@ -111,22 +109,39 @@ export class RockPaperScissorsComponent implements OnInit {
   CheckGame() {
     this.newGame.checkGame();
     if (this.newGame.machineWon) {
-      this._snackBar.open('You Lost the Match!', 'Ok', {
+      this._snackBar.open('You almost beat your last score, best luck next time', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
+      this.currentStreak = 0;
     }
     if (this.newGame.playerwon) {
-      this._snackBar.open('You Won the Match!', 'Ok', {
+      this._snackBar.open('You won, congratulations!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+      this.currentStreak++;
+      this.checkResult();
+    }
+    if (this.newGame.machineWon || this.newGame.playerwon) {
+      this.ResetGame();
+    }
+  }
+  checkResult() {
+    if (this.currentStreak > this.score) {
+      this.gameService.updateScoreByUserId({ resultId: this.resultId, result: this.currentStreak });
+      this._snackBar.open('Congrats you beat your own mark!', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
     }
-    if (this.newGame.machineWon || this.newGame.playerwon) {
-      this.enableReset = true;
-    }
+  }
+  ResetGame() {
+    this.newGame = new GameRockPaperScissors();
+    this.gameStarted = false;
   }
   Logout() {
     this.authService.Logout();

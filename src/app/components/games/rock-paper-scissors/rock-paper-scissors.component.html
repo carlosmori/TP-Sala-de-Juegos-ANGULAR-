@@ -24,7 +24,8 @@
 <div class="main-container">
   <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
   <h1>Rock, Paper & Scissors</h1>
-    <div class="game-container" *ngIf="gameStarted && !enableReset">
+  <div *ngIf="currentStreak !== 0">Your current Streak is : {{currentStreak}}</div>
+    <div class="game-container" *ngIf="gameStarted">
       <div class="results-container">
           <div class="rivals">
               Machine - You 
@@ -47,8 +48,5 @@
           </div>
       </div>
     </div>
-    <div class="begin-game" *ngIf="!gameStarted || enableReset">
-      <button mat-raised-button color="primary" (click)="Begin()" *ngIf="!enableReset">Begin</button>
-      <button mat-raised-button color="accent" (click)="Reset()" *ngIf="enableReset">Reset</button>
-    </div>
+      <button mat-raised-button color="primary" *ngIf="!gameStarted" (click)="Begin()">Begin</button>
 </div>
