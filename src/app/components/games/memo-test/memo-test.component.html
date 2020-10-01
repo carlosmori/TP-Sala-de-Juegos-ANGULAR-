@@ -24,9 +24,11 @@
   <div class="main-container">
     <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
     <h1>MemoTest</h1>
-    <h4 class="explanation">When you click "Begin" there will be a sequence of numbers-container
-      <br> you will need to memorize! Good luck
+    <div *ngIf="currentStreak !== 0">Your current Streak is : {{currentStreak}}</div>
+    <h4 class="explanation">When you click "Begin" there will be a sequence of numbers
+      <br> you will need to memorize! Good luck (You have 3 attempts)
     </h4>
+    <h4 *ngIf="attempts > 0">Attempts: <span class="attempts">{{attempts}}</span></h4>
     <div *ngIf="displayNumbers" class="numbers-container">
       <span *ngFor="let item of newGame.numberList">
         {{item}}
@@ -46,5 +48,4 @@
       </form>
     </div>
     <button mat-raised-button color="primary" (click)="Begin()" *ngIf="!displayNumbers && !showInput && !enableReset">Begin</button>
-    <button mat-raised-button color="accent" (click)="Reset()" *ngIf="enableReset">Reset</button>
 </div>

@@ -18,23 +18,21 @@ export class MemoTestComponent implements OnInit {
   interval: any;
   userSequence;
   disableButton = false;
-  enableReset: boolean;
   currentUserId: any;
   playerName: any;
   gameId: any;
   resultId: any;
   score: any;
+  currentStreak: number;
+  attempts: number;
   constructor(
     private _snackBar: MatSnackBar,
     private gameService: GamesService,
     private router: Router,
     private authService: AuthService
   ) {
-    this.newGame = new MemoTestGame();
-    this.newGame.numberList = [];
-    this.showInput = false;
-    this.timer = 10;
-    this.enableReset = false;
+    this.currentStreak = 0;
+    this.ResetGame();
   }
   ngOnInit() {
     const { uid, displayName } = this.authService.GetCurrentUser();
@@ -42,7 +40,7 @@ export class MemoTestComponent implements OnInit {
     this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'keyPress' })
+      .getGameIdByName({ name: 'memoTest' })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);
@@ -75,13 +73,6 @@ export class MemoTestComponent implements OnInit {
         }
       );
   }
-  Reset() {
-    this._snackBar.open('Here I would reset the game', 'Ok', {
-      duration: 3000,
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom'
-    });
-  }
   Begin() {
     this.displayNumbers = true;
     for (let i = 0; i <= 5; i++) {
@@ -94,30 +85,63 @@ export class MemoTestComponent implements OnInit {
         clearInterval(this.interval);
         this.showInput = true;
         this.displayNumbers = false;
-        this.timer = 5;
+        this.timer = 1;
         this.disableButton = true;
       }
     }, 1000);
   }
 
   CheckSequence(userSequence) {
-    this.newGame.won = this.newGame.checkSequence(userSequence);
+    this.attempts++;
+    this.newGame.won = userSequence ? this.newGame.checkSequence(userSequence) : false;
     if (this.newGame.won) {
-      this._snackBar.open('Congratulations, you win!', 'Ok', {
+      this._snackBar.open('You won, congratulations!', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
+      this.currentStreak++;
+      this.checkResult();
+      this.ResetGame();
     } else {
-      this._snackBar.open(`Sorry that's not the sequence`, 'Ok', {
+      if (this.attempts === 3) {
+        // The game is over, check if the player beat his score
+        // this.ResetGame();
+        this._snackBar.open('You almost beat your last score, best luck next time', 'Ok', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom'
+        });
+        this.currentStreak = 0;
+        this.ResetGame();
+      } else {
+        this._snackBar.open(`Sorry that's not the sequence`, 'Ok', {
+          duration: 3000,
+          horizontalPosition: 'right',
+          verticalPosition: 'bottom'
+        });
+      }
+    }
+  }
+  checkResult() {
+    if (this.currentStreak > this.score) {
+      this.gameService.updateScoreByUserId({ resultId: this.resultId, result: this.currentStreak });
+      this._snackBar.open('Congrats you beat your own mark!', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
     }
-    this.showInput = false;
-    this.enableReset = true;
   }
+  ResetGame() {
+    this.newGame = new MemoTestGame();
+    this.newGame.numberList = [];
+    this.showInput = false;
+    this.timer = 10;
+    this.attempts = 0;
+    this.userSequence = null;
+  }
+
   Logout() {
     this.authService.Logout();
   }
