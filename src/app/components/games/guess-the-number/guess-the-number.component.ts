@@ -12,7 +12,7 @@ import { GamesService } from '../../../services/games.service';
 })
 export class GuessTheNumberComponent implements OnInit {
   newGame: JuegoAdivina;
-  counter: number;
+  attempts: number;
   displayVerify: boolean;
   numberGenerated: boolean;
   enableReset: boolean;
@@ -21,6 +21,7 @@ export class GuessTheNumberComponent implements OnInit {
   gameId: any;
   resultId: any;
   score: any;
+  currentStreak: number;
 
   constructor(
     private _snackBar: MatSnackBar,
@@ -28,10 +29,8 @@ export class GuessTheNumberComponent implements OnInit {
     private router: Router,
     private authService: AuthService
   ) {
-    this.newGame = new JuegoAdivina();
-    this.displayVerify = false;
-    this.numberGenerated = false;
-    console.info('numero Secreto:', this.newGame.secretNumber);
+    this.currentStreak = 0;
+    this.ResetGame();
   }
   ngOnInit() {
     const { uid, displayName } = this.authService.GetCurrentUser();
@@ -39,7 +38,7 @@ export class GuessTheNumberComponent implements OnInit {
     this.playerName = displayName;
     //@todo move name to GameEnum
     this.gameService
-      .getGameIdByName({ name: 'keyPress' })
+      .getGameIdByName({ name: 'guessTheNumber' })
       .switchMap((game) => {
         if (game.length === 0) {
           this.router.navigate(['/Games']);
@@ -76,20 +75,22 @@ export class GuessTheNumberComponent implements OnInit {
   Begin() {
     this.numberGenerated = true;
     this.newGame.generateSecretNumber();
-    this.counter = 0;
+    this.attempts = 0;
     console.info('numero Secreto:', this.newGame.secretNumber);
   }
   Verify() {
-    this.counter++;
+    this.attempts++;
     if (this.newGame.verificar()) {
-      this.enableReset = true;
-      this._snackBar.open('You are the Winner!!!!', 'Ok', {
+      this.currentStreak++;
+      this._snackBar.open('You won, congratulations!', 'Ok', {
         duration: 3000,
         horizontalPosition: 'right',
         verticalPosition: 'bottom'
       });
+      this.checkResult();
+      this.ResetGame();
     } else {
-      switch (this.counter) {
+      switch (this.attempts) {
         case 1:
           this._snackBar.open('Not Yet, you can do it!', 'Ok', {
             duration: 3000,
@@ -105,35 +106,8 @@ export class GuessTheNumberComponent implements OnInit {
           });
           break;
         case 3:
-          this._snackBar.open('Third is the charm? Guess not', 'Ok', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom'
-          });
-          break;
         case 4:
-          this._snackBar.open(`It wasnt ${this.newGame.inputNumber}`, 'Ok', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom'
-          });
-          break;
         case 5:
-          this._snackBar.open(`${this.counter} attempts and counting...`, 'Ok', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom'
-          });
-          break;
-        case 6:
-          this._snackBar.open('Lucky in Love', 'Ok', {
-            duration: 3000,
-            horizontalPosition: 'right',
-            verticalPosition: 'bottom'
-          });
-          break;
-
-        default:
           const hint = this.newGame.throwHint();
           this._snackBar.open(`Here is a little hint, ${hint}`, 'Ok', {
             duration: 3000,
@@ -141,15 +115,34 @@ export class GuessTheNumberComponent implements OnInit {
             verticalPosition: 'bottom'
           });
           break;
+        default:
+          this._snackBar.open('You almost beat your last score, best luck next time', 'Ok', {
+            duration: 3000,
+            horizontalPosition: 'right',
+            verticalPosition: 'bottom'
+          });
+          this.currentStreak = 0;
+          this.ResetGame();
+          break;
       }
     }
   }
-  Reset() {
-    this._snackBar.open(`Here I would reset the game`, 'Ok', {
-      duration: 3000,
-      horizontalPosition: 'right',
-      verticalPosition: 'bottom'
-    });
+  checkResult() {
+    if (this.currentStreak > this.score) {
+      this.gameService.updateScoreByUserId({ resultId: this.resultId, result: this.currentStreak });
+      this._snackBar.open('Congrats you beat your own mark!', 'Ok', {
+        duration: 3000,
+        horizontalPosition: 'right',
+        verticalPosition: 'bottom'
+      });
+    }
+  }
+  ResetGame() {
+    this.newGame = new JuegoAdivina();
+    this.displayVerify = false;
+    this.numberGenerated = false;
+    this.attempts = 0;
+    console.info('numero Secreto:', this.newGame.secretNumber);
   }
   Logout() {
     this.authService.Logout();

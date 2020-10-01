@@ -25,16 +25,18 @@
 <div class="main-container">
   <div class="score" *ngIf="score != 0">Hello {{playerName}} <br> your Highest Score is : {{score}}</div>
   <h1>Guess the number!</h1>
+  <div *ngIf="currentStreak !== 0">Your current Streak is : {{currentStreak}}</div>
+  <h3>You have only 5 attempts</h3>
   <span class="hint">hint: it's in the range of 0 - 100</span>
+  <h4 *ngIf="attempts>0" class="attempts">Attempts: <span class="attempts">{{attempts}}</span></h4>
   <form class="example-form">
-    <mat-form-field *ngIf="numberGenerated && !enableReset" class="example-full-width">
+    <mat-form-field *ngIf="numberGenerated" class="example-full-width">
       <mat-label>Insert number</mat-label>
       <input matInput [(ngModel)]="newGame.inputNumber" name="inputNumber">
     </mat-form-field>
 
-    <button *ngIf="displayVerify || newGame.secretNumber && newGame.secretNumber!=0 && !enableReset" (click)="Verify()" mat-raised-button color="accent">Verify</button>
+    <button *ngIf="displayVerify || newGame.secretNumber && newGame.secretNumber!=0" (click)="Verify()" mat-raised-button color="accent">Verify</button>
     <button *ngIf="!newGame.secretNumber || newGame.secretNumber==0 " (click)="Begin()" mat-raised-button color="primary">Begin</button>
-    <button *ngIf="enableReset" (click)="Reset()" mat-raised-button color="accent">Reset</button>
   </form>
   </div>
 
