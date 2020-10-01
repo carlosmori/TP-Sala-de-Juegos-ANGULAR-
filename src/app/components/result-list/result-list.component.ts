@@ -19,7 +19,7 @@ export interface GameResult {
   templateUrl: './result-list.component.html',
   styleUrls: ['./result-list.component.scss']
 })
-export class ResultListComponent implements OnInit, AfterViewInit {
+export class ResultListComponent implements OnInit {
   displayedColumns: string[] = ['photoURL', 'name', 'email', 'sexo', 'cuit', 'result'];
   dataSource: MatTableDataSource<GameResult>;
   @ViewChild(MatSort) sort: MatSort;
@@ -37,33 +37,20 @@ export class ResultListComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
-    this.gameService.createResult({
-      userId: 'MMyZtOczeEThJvUcsnKhJnQv3wk1',
-      result: 1,
-      gameId: 'kmKXDoaMmabxtBs9pZzr'
-    });
     this.gameService.getGames().subscribe((gamesList) => {
       this.gamesList = gamesList;
     });
     this.userService.getUsers().subscribe((users) => (this.users = users));
   }
-  ngAfterViewInit() {}
   populateTable(game) {
     this.loading = true;
-
     this.gameService.getAllGameResults({ gameId: game.gameId }).subscribe((results) => {
       this.currentGameResults = results.map((result) => {
-        console.log('game results');
-        console.log(result);
-        console.log('users');
-        console.log(this.users);
         const userInfo = this.users.find((user) => user.uid == result.userId);
         return { ...result, ...userInfo };
       });
       this.dataSource = new MatTableDataSource(this.currentGameResults);
       this.loading = false;
-      console.log('currentGameResults');
-      console.log(this.currentGameResults);
     });
   }
   Logout() {

@@ -58,8 +58,8 @@ export class AuthService {
               horizontalPosition: 'right',
               verticalPosition: 'bottom'
             });
+            this.router.navigate(['/Principal']);
           });
-          this.router.navigate(['/Principal']);
         });
       })
       .catch((error) => {
